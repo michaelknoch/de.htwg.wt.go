@@ -1,6 +1,6 @@
 logs
-project/project
-project/target
+#project/project
+#project/target
 target
 tmp
 .history
@@ -15,4 +15,4 @@ dist
 /.project
 /RUNNING_PID
 /.settings
-/project/*-shim.sbt
+#/project/*-shim.sbt
