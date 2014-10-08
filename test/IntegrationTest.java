@@ -1,10 +1,9 @@
-import org.junit.*;
-
-import play.test.*;
+import org.junit.Test;
 import play.libs.F.*;
+import play.test.*;
 
-import static play.test.Helpers.*;
 import static org.fest.assertions.Assertions.*;
+import static play.test.Helpers.*;
 
 
 public class IntegrationTest {
