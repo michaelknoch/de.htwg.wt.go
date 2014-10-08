@@ -8,6 +8,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import play.libs.Json;
+import com.fasterxml.jackson.databind.JsonNode;
+
 public class Application extends Controller {
     static IGoController controller = Go.getInstance().getController();
 
@@ -19,6 +22,11 @@ public class Application extends Controller {
     public static Result test() {
 
         return ok(controller.tuiToString());
+    }
+
+    public static Result createNewField(String size) {
+        controller.createField(Integer.parseInt(size));
+        return ok("new Field created " + size + " x " + size);
     }
 
     public static Result setStone() {

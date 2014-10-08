@@ -17,3 +17,4 @@ dist
 /.settings
 #/project/*-shim.sbt
 .metadata/
+.log
