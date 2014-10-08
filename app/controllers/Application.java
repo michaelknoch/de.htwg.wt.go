@@ -12,4 +12,21 @@ public class Application extends Controller {
 
         return ok(views.html.index.render(controller.getStatus()));
     }
+
+    public static Result test() {
+
+        return ok(controller.tuiToString());
+    }
+
+    public static Result setStone(String x, String y) {
+        int paramX = Integer.parseInt(x);
+        int paramY = Integer.parseInt(y);
+        if(controller.setStone(paramX, paramY)) {
+            return ok(controller.getStatus());
+        } else {
+            return ok(controller.getStatus());
+        }
+
+    }
+
 }
