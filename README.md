@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/michaelknoch/de.htwg.wt.go.png?label=ready&title=Ready)](https://waffle.io/michaelknoch/de.htwg.wt.go)
 # 
 This Project is a work-in-progress. Go away! ;)
 
