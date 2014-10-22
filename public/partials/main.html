@@ -1,10 +1,7 @@
 
 <div class="control-group">
     <div >asd</div>
-
-<div ng-click="getGameField()">setStone</div>
-        <div ng-class="errorState ? 'error': 'success'">{{setStoneState.message}}</div>
-</div>
+<div ><div ng-click="createNewField(size)">createNewField</div> <input type="number" ng-model="size"></div>
 
 <div class="gamefield">
     <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
@@ -14,5 +11,8 @@
     </div>
 </div>
 
+<div ng-click="getGameField()">setStone</div>
+        <div ng-class="errorState ? 'error': 'success'">{{setStoneState.message}}</div>
+</div>
 
 <div></div>

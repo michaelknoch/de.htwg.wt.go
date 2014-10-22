@@ -31,14 +31,23 @@ angular.module('goApp')
                 $scope.getGameField();
             });
         };
-        $rootScope.headerTitle = 'Übersicht';
-        $scope.test = 'asdasdasdTest';
 
         $scope.getGameField = function() {
             var promise = GameService.getGameField();
             promise.then(function(resp) {
                 $scope.gameField = resp.data.gamefield;
             });
+        };
+
+        $scope.createNewField = function(size) {
+            GameService.createNewField(size)
+                .error(function() {
+                    $scope.errorState = true;
+                    $scope.createNewField = 'äääää';
+                }).then(function(resp) {
+                    $scope.errorState = false;
+                    $scope.getGameField();
+                });
         };
 
         //bootstrap gamefield
