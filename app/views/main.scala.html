@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <script type='text/javascript' src='@routes.Assets.at("js/vendor/angular.min.js")'></script>
-    <script type='text/javascript' src='@routes.Assets.at("js/mainCtrl.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("js/bower_components/angular.min.js")'></script>
     <style>
     body {
         margin-top: 50px;
@@ -26,5 +26,7 @@
     <div class="container">
         @content
     </div>
+    <script type='text/javascript' src='@routes.Assets.at("js/app.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("js/ctrl/mainCtrl.js")'></script>
 </body>
 </html>
