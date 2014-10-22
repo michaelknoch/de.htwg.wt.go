@@ -10,6 +10,9 @@ It exposes a RESTful http-api.
 | Resource | GET | POST | PUT | DELETE |
 | ------------- |:-------------| :----- |:----- | :-----|
 || (read) | (create) | (update) | (delete)  |
-|/setStone/:x/:y| - | set stone to the given choords | - | -  |
+|/setStone/| - | set stone to the given choords | - | -  |
 |/createNewField/:size| - | create new gameField | - | -  |
+|/getStatus/| returns Gamestatus | - | - | -  |
+|/getScore/| returns the Score of both players | - | - | -  |
+|/getGameField/| returns the Gamefield | - | - | -  |
 
