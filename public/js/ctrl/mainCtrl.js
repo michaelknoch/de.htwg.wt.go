@@ -8,7 +8,7 @@
  * Controller of the invoicePocApp
  */
 angular.module('goApp')
-    .controller('MainCtrl', function($scope, $rootScope, $state, GameService) {
+    .controller('MainCtrl', function($scope, $rootScope, $state, GameService, $interval) {
         console.log(GameService);
         $scope.errorState = false;
         $scope.gameField = [];
@@ -32,9 +32,16 @@ angular.module('goApp')
             });
         };
 
+        $scope.getStatus = function() {
+            GameService.getStatus().error().then(function(resp) {
+                $scope.status = resp.data;
+            });
+        };
+
         $scope.getGameField = function() {
             var promise = GameService.getGameField();
             promise.then(function(resp) {
+                $scope.getStatus();
                 $scope.gameField = resp.data.gamefield;
             });
         };
@@ -52,4 +59,6 @@ angular.module('goApp')
 
         //bootstrap gamefield
         $scope.getGameField();
+        $scope.getStatus();
+        $interval($scope.getGameField, 1000);
     });
