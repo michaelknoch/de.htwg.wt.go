@@ -19,16 +19,31 @@ public class Application extends Controller {
         return ok(views.html.index.render(controller.getStatus()));
     }
 
+    /**
+     * TODO: remove
+     * @return
+     */
     public static Result test() {
 
         return ok(controller.tuiToString());
     }
 
+    /**
+     * createNewField
+     * Route for /createNewField/:size
+     * @param size, size of the field
+     * @return
+     */
     public static Result createNewField(String size) {
         controller.createField(Integer.parseInt(size));
         return ok("new Field created " + size + " x " + size);
     }
 
+    /**
+     * setStone
+     * Route for /setStone
+     * @return
+     */
     public static Result setStone() {
         JsonNode json = request().body().asJson();
         ObjectNode result = Json.newObject();
