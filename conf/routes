@@ -3,6 +3,8 @@
 # ~~~~
 
 GET     /                           controllers.Application.index()
+GET     /getStatus                  controllers.Application.getStatus()
+
 
 POST    /setStone                  controllers.Application.setStone()
 POST    /createNewField/:size       controllers.Application.createNewField(size)
