@@ -97,7 +97,7 @@ public class Application extends Controller {
             }
         }
 
-        result.put("Gamefield", Json.toJson(field));
+        result.put("gamefield", Json.toJson(field));
 
         return ok(result);
     }
