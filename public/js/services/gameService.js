@@ -8,6 +8,9 @@ angular.module('goApp')
         getStatus: function() {
             return $http.get('/getStatus');
         },
+        getScore: function() {
+            return $http.get('/getScore');
+        },
         setStone: function(formData) {
             return $http.post('/setStone', formData);
         }
