@@ -10,7 +10,6 @@
  */
 angular.module('goApp', ['ui.router'])
     .config(function($urlRouterProvider, $stateProvider) {
-        console.log('asddasdda');
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('main', {
