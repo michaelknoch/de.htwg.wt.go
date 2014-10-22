@@ -16,6 +16,12 @@ angular.module('goApp')
         },
         setStone: function(formData) {
             return $http.post('/setStone', formData);
+        },
+        createNewField: function(size) {
+            if (!size) {
+                throw new TypeError('invalid params', 'missing size');
+            }
+            return $http.post('/createNewField/' + size);
         }
     };
 });
