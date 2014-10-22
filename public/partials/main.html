@@ -8,7 +8,9 @@
 
 <div class="gamefield">
     <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
-        <div class="cell" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">{{f}} </div>
+        <div class="cell" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+            {{f}}
+        </div>
     </div>
 </div>
 
