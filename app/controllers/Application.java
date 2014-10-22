@@ -25,7 +25,6 @@ public class Application extends Controller {
      * @return
      */
     public static Result test() {
-
         return ok(controller.tuiToString());
     }
 
