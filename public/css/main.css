@@ -1,18 +1,26 @@
 .cell {
-    width: 20px;
-    height:20px;
+    width: 55px;
+    height: 55px;
     float:left;
-    cursor: pointer;
-
 }
 .cell:hover {
-    background-color: rgba(0,0,0,0.3);
+    /*background: url('../images/bwStone.png') no-repeat center center;*/
+    cursor: pointer;
 }
 .line {
-    width: 180px;
+    width: 100%;
     float: left;
 }
 .gamefield {
-    width: 200px;
+    width: 495px;
+    height: 495px;
+    padding: 4px;
     float: left;
+    background: url('../images/gamefield99.jpg');
+}
+.gamefield .cell2 {
+    background: url('../images/blackStone.png') no-repeat center center;
+}
+.gamefield .cell1 {
+    background: url('../images/whiteStone.png') no-repeat center center;
 }
