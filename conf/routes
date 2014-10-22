@@ -6,10 +6,12 @@ GET     /                           controllers.Application.index()
 GET     /getStatus                  controllers.Application.getStatus()
 GET     /getScore                   controllers.Application.getScore()
 GET     /getGameField               controllers.Application.getGameField()
+GET     /getNext                    controllers.Application.getNext()
 
 
-POST    /setStone                  controllers.Application.setStone()
+POST    /setStone                   controllers.Application.setStone()
 POST    /createNewField/:size       controllers.Application.createNewField(size)
+POST    /pass                       controllers.Application.pass()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

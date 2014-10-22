@@ -93,15 +93,21 @@ public class Application extends Controller {
 
         for (int i = 0; i < fieldSize; i++) {
             for (int j = 0; j < fieldSize; j++) {
-
                 field[i][j] = controller.getCellStatus(i, j) + "";
-
             }
         }
 
         result.put("Gamefield", Json.toJson(field));
 
         return ok(result);
+    }
+
+    public static Result getNext() {
+        return ok(controller.getNext());
+    }
+
+    public static Result pass() {
+        return ok(controller.pass() + "");
     }
 
 }
