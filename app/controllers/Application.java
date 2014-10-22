@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+
 import play.libs.Json;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -75,12 +76,32 @@ public class Application extends Controller {
         return ok(controller.getStatus());
     }
 
-    public static Result getWhitePlayerScore() {
-        return ok(controller.getwhitePlayerScore() + "");
+
+    public static Result getScore() {
+        ObjectNode result = Json.newObject();
+        result.put("white", controller.getwhitePlayerScore());
+        result.put("black", controller.getblackPlayerScore());
+        return ok(result);
     }
 
-    public static Result getBlackPlayerScore() {
-        return ok(controller.getblackPlayerScore() + "");
+    public static Result getGameField() {
+        int fieldSize = controller.getGameFieldSize();
+
+        ObjectNode result = Json.newObject();
+
+        String[][] field = new String[fieldSize][fieldSize];
+
+        for (int i = 0; i < fieldSize; i++) {
+            for (int j = 0; j < fieldSize; j++) {
+
+                field[i][j] = controller.getCellStatus(i, j) + "";
+
+            }
+        }
+
+        result.put("Gamefield", Json.toJson(field));
+
+        return ok(result);
     }
 
 }

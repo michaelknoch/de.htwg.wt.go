@@ -4,8 +4,8 @@
 
 GET     /                           controllers.Application.index()
 GET     /getStatus                  controllers.Application.getStatus()
-GET     /getWhitePlayerScore        controllers.Application.getWhitePlayerScore()
-GET     /getBlackPlayerScore        controllers.Application.getBlackPlayerScore()
+GET     /getScore                   controllers.Application.getScore()
+GET     /getGameField               controllers.Application.getGameField()
 
 
 POST    /setStone                  controllers.Application.setStone()
