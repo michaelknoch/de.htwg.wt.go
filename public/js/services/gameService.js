@@ -11,6 +11,9 @@ angular.module('goApp')
         getScore: function() {
             return $http.get('/getScore');
         },
+        getGameField: function() {
+            return $http.get('/getGameField');
+        },
         setStone: function(formData) {
             return $http.post('/setStone', formData);
         }
