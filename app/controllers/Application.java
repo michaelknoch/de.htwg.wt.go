@@ -20,6 +20,7 @@ public class Application extends Controller {
 
     /**
      * TODO: remove
+     *
      * @return
      */
     public static Result test() {
@@ -30,6 +31,7 @@ public class Application extends Controller {
     /**
      * createNewField
      * Route for /createNewField/:size
+     *
      * @param size, size of the field
      * @return
      */
@@ -41,12 +43,13 @@ public class Application extends Controller {
     /**
      * setStone
      * Route for /setStone
+     *
      * @return
      */
     public static Result setStone() {
         JsonNode json = request().body().asJson();
         ObjectNode result = Json.newObject();
-        if(json == null) {
+        if (json == null) {
             return badRequest("Expecting Json data");
         } else {
             String propX = json.findValue("x").toString();
@@ -54,7 +57,7 @@ public class Application extends Controller {
             int intY = Integer.parseInt(propY);
             int intX = Integer.parseInt(propX);
             boolean status = controller.setStone(intX, intY);
-            if(!status) {
+            if (!status) {
                 result.put("status", "ERROR");
                 result.put("statusCode", 400);
                 result.put("message", controller.getStatus());
@@ -70,6 +73,14 @@ public class Application extends Controller {
 
     public static Result getStatus() {
         return ok(controller.getStatus());
+    }
+
+    public static Result getWhitePlayerScore() {
+        return ok(controller.getwhitePlayerScore() + "");
+    }
+
+    public static Result getBlackPlayerScore() {
+        return ok(controller.getblackPlayerScore() + "");
     }
 
 }
