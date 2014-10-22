@@ -5,10 +5,9 @@
         <div ng-class="errorState ? 'error': 'success'">{{setStoneState.message}}</div>
 </div>
 
-{{gameField}}
 
 <div ng-repeat="field in gameField">
-    <p>{{field}}</p>
+    <div ng-repeat="f in field track by $index">{{f}}</div>
 </div>
 
 <div></div>
