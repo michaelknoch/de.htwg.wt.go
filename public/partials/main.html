@@ -1,8 +1,14 @@
-<div >asd</div>
+<div class="control-group">
+    <div >asd</div>
 
-<div ng-click="setStone()">setStone</div>
+<div ng-click="getGameField()">setStone</div>
+        <div ng-class="errorState ? 'error': 'success'">{{setStoneState.message}}</div>
+</div>
 
-<input type="text" ng-model="yourName" placeholder="Enter a name here">
-        {{yourName}}
-        {{headerTitle}}
-{{setStoneState}}
+{{gameField}}
+
+<div ng-repeat="field in gameField">
+    <p>{{field}}</p>
+</div>
+
+<div></div>
