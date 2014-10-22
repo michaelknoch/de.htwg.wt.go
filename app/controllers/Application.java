@@ -68,4 +68,8 @@ public class Application extends Controller {
         }
     }
 
+    public static Result getStatus() {
+        return ok(controller.getStatus());
+    }
+
 }
