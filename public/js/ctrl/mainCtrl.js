@@ -29,6 +29,7 @@ angular.module('goApp')
                 $scope.errorState = false;
                 $scope.setStoneState = resp;
                 $scope.getGameField();
+                fetchInformation();
             });
         };
 
@@ -41,7 +42,6 @@ angular.module('goApp')
         $scope.getGameField = function() {
             var promise = GameService.getGameField();
             promise.then(function(resp) {
-                $scope.getStatus();
                 $scope.gameField = resp.data.gamefield;
             });
         };
@@ -57,8 +57,20 @@ angular.module('goApp')
                 });
         };
 
+        $scope.getScore = function() {
+            GameService.getScore().error().then(function(resp) {
+                $scope.score = resp.data;
+            });
+        };
+
+        function fetchInformation() {
+            $scope.getScore();
+            $scope.getGameField();
+            $scope.getStatus();
+        }
+
         //bootstrap gamefield
         $scope.getGameField();
         $scope.getStatus();
-        $interval($scope.getGameField, 1000);
+        $interval(fetchInformation, 10000);
     });

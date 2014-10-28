@@ -1,22 +1,19 @@
-<div class="row">
 
-    <div class="control-group col-sm-12">
-        <div>{{status}}</div>
-        <div>
-            <div ng-click="createNewField(size)">createNewField</div>
-            <input type="number" ng-model="size"></div>
+<div class="control-group">
+    <div >{{status}}</div>
+<div ><div ng-click="createNewField(size)">createNewField</div> <input type="number" ng-model="size"></div>
 
-        <div class="gamefield col-sm-12">
-            <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
-                <div class="" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
-                    <div class="cell cell{{f}}"></div>
-                </div>
-            </div>
+<div class="gamefield">
+    <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
+        <div class=""  ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+            <div class="cell cell{{f}}"></div>
         </div>
-
-        <div ng-click="getGameField()">setStone</div>
-        <div ng-class="errorState ? 'error': 'success'">{{setStoneState.message}}</div>
     </div>
-
-    <div></div>
 </div>
+
+<div ng-click="getGameField()">setStone</div>
+        <div ng-class="errorState ? 'error': 'success'">{{setStoneState.message}}</div>
+</div>
+
+<div></div>
+<div ng-click="getScore()">get score: {{score}}</div>
