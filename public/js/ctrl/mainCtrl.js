@@ -57,6 +57,12 @@ angular.module('goApp')
                 });
         };
 
+        $scope.getScore = function() {
+            GameService.getScore().error().then(function(resp) {
+                $scope.score = resp.data;
+            });
+        };
+
         //bootstrap gamefield
         $scope.getGameField();
         $scope.getStatus();
