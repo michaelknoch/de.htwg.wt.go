@@ -14,10 +14,6 @@ angular.module('goApp')
         $scope.gameField = [];
 
         $scope.setStone = function(x, y) {
-            var json = {
-                x: 1,
-                y: 2
-            };
             var promise = GameService.setStone({
                 x: x,
                 y: y
