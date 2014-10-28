@@ -29,6 +29,7 @@ angular.module('goApp')
                 $scope.errorState = false;
                 $scope.setStoneState = resp;
                 $scope.getGameField();
+                fetchInformation();
             });
         };
 
@@ -71,5 +72,5 @@ angular.module('goApp')
         //bootstrap gamefield
         $scope.getGameField();
         $scope.getStatus();
-        $interval(fetchInformation, 1000);
+        $interval(fetchInformation, 10000);
     });
