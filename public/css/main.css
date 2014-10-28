@@ -25,9 +25,4 @@
     background: url('../images/whiteStone.png') no-repeat center center;
 }
 
-.gamefield .cell-1 {
-    background: red;
-}
-.gamefield .cell-2 {
-    background: yellow;
-}
+
