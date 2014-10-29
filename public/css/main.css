@@ -24,5 +24,30 @@
 .gamefield .cell1 {
     background: url('../images/whiteStone.png') no-repeat center center;
 }
+.scoreboard {
+    width: 200px;
+    float: right;
+}
+.scoreboard .white, .scoreboard .black {
+    width: 67px;
+    height: 43px;
+    padding-top: 50px;
+    padding-left: 113px;
+    margin-bottom: 10px;
+    float:left;
+    font-size: 20px;
+}
 
+.scoreboard .white {
+    background: url('../images/whiteScoreboard.jpg');
+}
+.scoreboard .black {
+    background: url('../images/blackScoreboard.jpg');
+}
 
+.scoreboard .white .act {
+    background: url('../images/whiteScoreboardAct.jpg');
+}
+.scoreboard .black .act {
+    background: url('../images/blackScoreboardAct.jpg');
+}
