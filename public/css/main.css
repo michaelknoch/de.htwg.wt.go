@@ -51,3 +51,15 @@
 .scoreboard .black.act {
     background: url('../images/blackScoreboardAct.jpg');
 }
+
+.status-line {
+    float: left;
+    width: 180px;
+    padding: 10px;
+}
+
+* {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
