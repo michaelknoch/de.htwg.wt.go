@@ -45,9 +45,9 @@
     background: url('../images/blackScoreboard.jpg');
 }
 
-.scoreboard .white .act {
+.scoreboard .white.act {
     background: url('../images/whiteScoreboardAct.jpg');
 }
-.scoreboard .black .act {
+.scoreboard .black.act {
     background: url('../images/blackScoreboardAct.jpg');
 }

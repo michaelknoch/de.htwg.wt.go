@@ -18,6 +18,6 @@
 
 <div class="scoreboard">
     <p>Score:</p>
-    <div class="white">{{score.white}}</div>
-    <div class="black">{{score.black}}</div>
+    <div class="white" ng-class="{act: whosNext == 'white'}">{{score.white}}</div>
+    <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
 </div>
