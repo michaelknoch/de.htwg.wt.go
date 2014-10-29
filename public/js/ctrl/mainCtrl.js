@@ -9,7 +9,6 @@
  */
 angular.module('goApp')
     .controller('MainCtrl', function($scope, $rootScope, $state, GameService, $interval) {
-        console.log(GameService);
         $scope.errorState = false;
         $scope.gameField = [];
 
