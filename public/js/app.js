@@ -16,10 +16,6 @@ angular.module('goApp', ['ui.router'])
                 url: '/',
                 templateUrl: 'assets/partials/main.html',
                 controller: 'MainCtrl'
-            })
-            .state('asd', {
-                url: '/asd',
-                templateUrl: 'assets/partials/main.html',
-                controller: 'MainCtrl'
             });
+
     });
