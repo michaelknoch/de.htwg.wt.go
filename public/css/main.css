@@ -54,12 +54,25 @@
 
 .status-line {
     float: left;
-    width: 180px;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 * {
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
     box-sizing: inherit;
+}
+
+.container {
+    max-width: 756px;
+}
+
+.full-wrapper {
+    float: left;
+}
+
+body {
+   background-color: #992315;
+   /* For WebKit (Safari, Chrome, etc) */
+   background: #992315 -webkit-gradient(linear, left top, left bottom, from(#997B15), to(#992315)) no-repeat;
 }
