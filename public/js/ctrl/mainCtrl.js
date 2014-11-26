@@ -12,6 +12,13 @@ angular.module('goApp')
         $scope.errorState = false;
         $scope.gameField = [];
 
+        var connection = new WebSocket('ws://localhost:9000/connectWebSocket');
+
+        connection.onmessage = function(msg) {
+            $scope.gameField = JSON.parse(msg.data).gamefield;
+            $scope.$apply();
+        };
+
         $scope.setStone = function(x, y) {
             var promise = GameService.setStone({
                 x: x,
@@ -23,8 +30,8 @@ angular.module('goApp')
             }).then(function(resp) {
                 $scope.errorState = false;
                 $scope.setStoneState = resp;
-                $scope.getGameField();
-                fetchInformation();
+                //$scope.getGameField();
+                //fetchInformation();
             });
         };
 
