@@ -2,7 +2,7 @@
 
 angular.module('goApp')
 
-.service('GameService', function($http, $q) {
+.service('GameService', function($http) {
 
     return {
         getStatus: function() {
