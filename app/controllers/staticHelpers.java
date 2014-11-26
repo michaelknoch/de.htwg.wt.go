@@ -5,6 +5,9 @@ import de.htwg.go.Go;
 import de.htwg.go.controller.IGoController;
 import play.libs.Json;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by michaelknoch on 26.11.14.
  */
@@ -24,7 +27,13 @@ public class staticHelpers {
             }
         }
 
+        Map<String, Integer> score = new HashMap<String, Integer>();
+        score.put("white", controller.getwhitePlayerScore());
+        score.put("black", controller.getblackPlayerScore());
+
         result.put("gamefield", Json.toJson(field));
+        result.put("next", Json.toJson(controller.getNext()));
+        result.put("score", Json.toJson(score));
 
         return result;
     }
