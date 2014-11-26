@@ -17,4 +17,5 @@ angular.module('goApp', ['ui.router'])
                 templateUrl: 'assets/partials/main.html',
                 controller: 'MainCtrl'
             });
+
     });
