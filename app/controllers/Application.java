@@ -7,9 +7,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import play.mvc.Controller;
 import play.mvc.Result;
+import model.GameFieldObserver;
+import play.mvc.WebSocket;
 
-import play.libs.Json;
-import com.fasterxml.jackson.databind.JsonNode;
 
 public class Application extends Controller {
     static IGoController controller = Go.getInstance().getController();
@@ -108,4 +108,14 @@ public class Application extends Controller {
         return ok(controller.pass() + "");
     }
 
+    public static WebSocket<String> connectWebSocket() {
+        return new WebSocket<String>() {
+
+            public void onReady(WebSocket.In<String> in, WebSocket.Out<String out) {
+                new GameFieldObserver(controller, out);
+            }
+
+        };
+
+    }
 }
