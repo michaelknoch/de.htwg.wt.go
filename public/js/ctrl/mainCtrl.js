@@ -15,7 +15,10 @@ angular.module('goApp')
         var connection = new WebSocket('ws://localhost:9000/connectWebSocket');
 
         connection.onmessage = function(msg) {
-            $scope.gameField = JSON.parse(msg.data).gamefield;
+            var data = JSON.parse(msg.data);
+            $scope.gameField = data.gamefield;
+            $scope.score = data.score;
+            $scope.whosNext = data.next;
             $scope.$apply();
         };
 
