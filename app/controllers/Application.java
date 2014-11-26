@@ -83,21 +83,7 @@ public class Application extends Controller {
     }
 
     public static Result getGameField() {
-        int fieldSize = controller.getGameFieldSize();
-
-        ObjectNode result = Json.newObject();
-
-        String[][] field = new String[fieldSize][fieldSize];
-
-        for (int i = 0; i < fieldSize; i++) {
-            for (int j = 0; j < fieldSize; j++) {
-                field[i][j] = controller.getCellStatus(i, j) + "";
-            }
-        }
-
-        result.put("gamefield", Json.toJson(field));
-
-        return ok(result);
+        return ok(staticHelpers.getGameField());
     }
 
     public static Result getNext() {
@@ -111,7 +97,7 @@ public class Application extends Controller {
     public static WebSocket<String> connectWebSocket() {
         return new WebSocket<String>() {
 
-            public void onReady(WebSocket.In<String> in, WebSocket.Out<String out) {
+            public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
                 new GameFieldObserver(controller, out);
             }
 

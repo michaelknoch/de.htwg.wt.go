@@ -1,5 +1,6 @@
 package model;
 
+import controllers.staticHelpers;
 import play.mvc.WebSocket;
 import play.mvc.WebSocket.Out;
 import de.htwg.go.controller.IGoController;
@@ -20,7 +21,7 @@ public class GameFieldObserver implements IObserver {
 
     @Override
     public void update(Event arg0) {
-        out.write(controller.getNext());
+        out.write(staticHelpers.getGameField().toString());
         System.out.println("WUI was updated");
     }
 
