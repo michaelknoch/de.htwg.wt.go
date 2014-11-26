@@ -77,5 +77,5 @@ angular.module('goApp')
         //bootstrap gamefield
         $scope.getGameField();
         fetchInformation();
-        $interval(fetchInformation, 10000);
+        //$interval(fetchInformation, 10000);
     });
