@@ -8,6 +8,7 @@ GET     /getScore                   controllers.Application.getScore()
 GET     /getGameField               controllers.Application.getGameField()
 GET     /getNext                    controllers.Application.getNext()
 
+GET     /connectWebSocket           controllers.Application.connectWebSocket()
 
 POST    /setStone                   controllers.Application.setStone()
 POST    /createNewField/:size       controllers.Application.createNewField(size)
