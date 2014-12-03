@@ -12,10 +12,13 @@ angular.module('goApp', ['ui.router'])
     .config(function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
-            .state('main', {
+            .state('welcome', {
                 url: '/',
                 templateUrl: 'assets/partials/main.html',
+                controller: 'WelcomeCtrl'
+            }).state('game', {
+                url: '/game',
+                templateUrl: 'assets/partials/game.html',
                 controller: 'MainCtrl'
             });
-
     });

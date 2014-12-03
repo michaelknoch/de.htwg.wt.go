@@ -1,0 +1,28 @@
+
+<div class="control-group">
+
+    <div>
+        <div ng-click="createNewField(size)">createNewField</div>
+        <input type="number" ng-model="size">
+    </div>
+</div>
+<div class="row">
+    <div class="gamefield">
+        <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
+            <div class=""  ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                <div class="cell cell{{f}}"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scoreboard">
+        <p>Score:</p>
+        <div class="white" ng-class="{act: whosNext == 'white'}">{{score.white}}</div>
+        <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
+    </div>
+</div>
+<div class="status-line">
+    <div >{{status}}</div>
+    <div ng-class="errorState ? 'bg-danger': 'bg-success'">{{setStoneState.message}}</div>
+</div>
+
