@@ -34,6 +34,7 @@ public class staticHelpers {
         result.put("gamefield", Json.toJson(field));
         result.put("next", Json.toJson(controller.getNext()));
         result.put("score", Json.toJson(score));
+        result.put("operate", Json.toJson(controller.getOperate()));
 
         return result;
     }

@@ -73,3 +73,10 @@
 .pass-button {
     width: 100%;
 }
+
+.pass-button:focus {
+   color: #333;
+   background-color: #fff;
+   border-color: #ccc;
+   outline: none;
+}

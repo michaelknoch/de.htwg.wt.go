@@ -94,6 +94,10 @@ public class Application extends Controller {
         return ok(controller.pass() + "");
     }
 
+    public static Result operate() {
+        return ok(controller.getOperate() + "");
+    }
+
     public static WebSocket<String> connectWebSocket() {
         return new WebSocket<String>() {
 
@@ -104,4 +108,5 @@ public class Application extends Controller {
         };
 
     }
+
 }
