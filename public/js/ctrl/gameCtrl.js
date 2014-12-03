@@ -18,6 +18,7 @@ angular.module('goApp')
             $scope.gameField = data.gamefield;
             $scope.score = data.score;
             $scope.whosNext = data.next;
+            $scope.operate = data.operate;
             $scope.$apply();
         };
 
@@ -75,6 +76,10 @@ angular.module('goApp')
             GameService.getScore().error().then(function(resp) {
                 $scope.score = resp.data;
             });
+        };
+
+        $scope.pass = function() {
+            GameService.pass();
         };
 
         function fetchInformation() {

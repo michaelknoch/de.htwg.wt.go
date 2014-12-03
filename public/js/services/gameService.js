@@ -21,6 +21,9 @@ angular.module('goApp')
                 throw new TypeError('invalid params', 'missing size');
             }
             return $http.post('/createNewField/' + size);
+        },
+        pass: function() {
+            return $http.post('/pass');
         }
     };
 });

@@ -69,3 +69,7 @@
 .full-wrapper {
     float: left;
 }
+
+.pass-button {
+    width: 100%;
+}
