@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular.module('goApp', ['ui.router'])
+angular.module('goApp', ['ui.router', 'ngMaterial'])
     .config(function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider

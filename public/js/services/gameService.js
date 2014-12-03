@@ -3,7 +3,6 @@
 angular.module('goApp')
 
 .service('GameService', function($http) {
-
     return {
         getStatus: function() {
             return $http.get('/getStatus');
