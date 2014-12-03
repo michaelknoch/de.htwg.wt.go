@@ -14,7 +14,6 @@
 .gamefield {
     width: 495px;
     height: 495px;
-    padding: 4px;
     float: left;
     background: url('../images/gamefield99.jpg');
 }
