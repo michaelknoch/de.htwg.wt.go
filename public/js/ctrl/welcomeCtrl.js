@@ -12,10 +12,6 @@ angular.module('goApp')
         var alert;
         showWelcomeDialog();
 
-        $scope.userName = $scope.userName || 'Bobby';
-        // Dialog #1 - Show simple alert dialog and cache
-        // reference to dialog instance
-
         $scope.closeDialog = function() {
             $mdDialog.hide(alert, "finished");
             alert = undefined;
@@ -34,6 +30,7 @@ angular.module('goApp')
             // When the 'enter' animation finishes...
             function afterShowAnimation(scope, element, options) {
                 // post-show code here: DOM element focus, etc.
+                debugger;
             }
         }
     });
@@ -41,9 +38,15 @@ angular.module('goApp')
 angular.module('goApp')
     .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog) {
         $scope.closeDialog = function() {
-            $mdDialog.hide(function() {
-                debugger;
+            $mdDialog.hide({
+                onComplete: afterShowAnimation
             });
             $state.go('game');
+
         };
+
+
+        function afterShowAnimation() {
+
+        }
     });

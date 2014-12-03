@@ -8,7 +8,7 @@
  * Controller of the invoicePocApp
  */
 angular.module('goApp')
-    .controller('MainCtrl', function($scope, $rootScope, $state, GameService, $interval) {
+    .controller('GameCtrl', function($scope, $rootScope, $state, GameService, $interval) {
         $scope.errorState = false;
         $scope.gameField = [];
         var connection = new WebSocket('ws://localhost:9000/connectWebSocket');
