@@ -30,7 +30,6 @@ angular.module('goApp')
             // When the 'enter' animation finishes...
             function afterShowAnimation(scope, element, options) {
                 // post-show code here: DOM element focus, etc.
-                debugger;
             }
         }
     });
