@@ -19,4 +19,4 @@ dist
 .metadata/
 *.log
 
-public/bower_components/
+#public/bower_components/
