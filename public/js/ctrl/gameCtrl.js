@@ -11,7 +11,7 @@ angular.module('goApp')
     .controller('GameCtrl', function($scope, $rootScope, $state, GameService, $interval) {
         $scope.errorState = false;
         $scope.gameField = [];
-        var connection = new WebSocket('ws://localhost:9000/connectWebSocket');
+        var connection = new WebSocket('/connectWebSocket');
 
         connection.onmessage = function(msg) {
             var data = JSON.parse(msg.data);
