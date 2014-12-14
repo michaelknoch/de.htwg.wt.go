@@ -33,8 +33,6 @@ angular.module('goApp')
             }).then(function(resp) {
                 $scope.errorState = false;
                 $scope.setStoneState = resp;
-                //$scope.getGameField();
-                //fetchInformation();
             });
         };
 
