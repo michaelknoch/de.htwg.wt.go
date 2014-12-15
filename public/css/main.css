@@ -1,7 +1,9 @@
+
 .cell {
     width: 55px;
     height: 55px;
     float:left;
+    background: url('../images/cells/cell.png');
 }
 .cell:hover {
     /*background: url('../images/bwStone.png') no-repeat center center;*/
@@ -15,7 +17,6 @@
     width: 495px;
     height: 495px;
     float: left;
-    background: url('../images/gamefield99.jpg');
 }
 .gamefield .cell2 {
     background: url('../images/blackStone.png') no-repeat center center;
@@ -30,7 +31,6 @@
 .scoreboard .white, .scoreboard .black {
     width: 67px;
     height: 43px;
-    padding-top: 50px;
     padding-left: 113px;
     margin-bottom: 10px;
     float:left;
@@ -38,17 +38,10 @@
 }
 
 .scoreboard .white {
-    background: url('../images/whiteScoreboard.jpg');
+    background: url('../images/whiteStone.png') no-repeat;
 }
 .scoreboard .black {
-    background: url('../images/blackScoreboard.jpg');
-}
-
-.scoreboard .white.act {
-    background: url('../images/whiteScoreboardAct.jpg');
-}
-.scoreboard .black.act {
-    background: url('../images/blackScoreboardAct.jpg');
+    background: url('../images/blackStone.png') no-repeat;
 }
 
 .status-line {
@@ -83,4 +76,59 @@
 
 .menu-bar {
     padding: 50px 0;
+}
+
+.back {
+    min-height: 120vh;
+    min-width: 110vw;
+    position: absolute;
+    z-index: -1;
+    background: url('../images/hipster_back.jpg') no-repeat center center;
+    -webkit-filter: blur(15px);
+    margin-left: -30px;
+    margin-top: -20px;
+    overflow: hidden;
+}
+
+body {
+    background: none !important;
+    overflow: hidden;
+}
+
+.gamefield {
+    background: rgba(255, 255,255, 0.3);
+    padding: 20px;
+    box-sizing: content-box;
+}
+
+.scoreboard {
+    background: rgba(255, 255,255, 0.5);
+    float: left;
+    margin-left: 3px;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.statusrow {
+    margin-top: 3px;
+    background: rgba(255, 255,255, 0.5);
+    padding-left: 10px;
+    float: left;
+    width: 100%;
+    max-width: 535px;
+}
+
+.buttons {
+    float: left;
+    width: 200px;
+    margin-left: 3px;
+}
+
+.buttons .btn {
+    background: rgba(255,255,255,0.8);
+    border-radius: 0;
+}
+
+.field-wrapper {
+    float: left;
 }

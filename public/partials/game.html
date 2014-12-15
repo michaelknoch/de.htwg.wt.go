@@ -1,66 +1,57 @@
-
 <div class="control-group">
 
     <div>
         <div ng-click="createNewField(size)">createNewField</div>
         <input type="number" ng-model="size">
     </div>
-    <div class="row menu-bar">
 
-            <md-toolbar md-theme="green">
-                <h1 class="md-toolbar-tools">
-                    <md-button class="md-fab md-primary" aria-label="new game">
-                        <md-tooltip>
-                            New game
-                        </md-tooltip>
-                        <span class="glyphicon glyphicon-plus" ></span>
-                        </md-icon>
-                    </md-button>
-                </h1>
-            </md-toolbar>
-
-
-
-    </div>
 </div>
 <div class="row">
-    <div class="gamefield">
-        <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
-            <div ng-if="parentIndex == 0" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
-                <div class="border-top cell cell{{f}}"></div>
+    <div class="field-wrapper">
+        <div class="gamefield">
+            <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
+                <div ng-if="parentIndex == 0" ng-repeat="f in field track by $index"
+                     ng-click="setStone(parentIndex, $index)">
+                    <div class="border-top cell cell{{f}}"></div>
+                </div>
+
+                <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index == 0"
+                     ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                    <div class="border-left cell cell{{f}}"></div>
+                </div>
+
+                <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index > 0 && $index < gameFieldIndex"
+                     ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                    <div class="cell cell{{f}} {{$index}}"></div>
+                </div>
+
+                <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index == gameFieldIndex"
+                     ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                    <div class="border-right cell cell{{f}} {{$index}}"></div>
+                </div>
+
+                <div ng-if="parentIndex == gameFieldIndex" ng-repeat="f in field track by $index"
+                     ng-click="setStone(parentIndex, $index)">
+                    <div class="border-bottom cell cell{{f}}"></div>
+                </div>
+
             </div>
-
-            <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index == 0" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
-                <div class="border-left cell cell{{f}}"></div>
-            </div>
-
-            <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index > 0 && $index < gameFieldIndex" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
-                <div class="cell cell{{f}} {{$index}}"></div>
-            </div>
-
-            <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index == gameFieldIndex" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
-                <div class="border-right cell cell{{f}} {{$index}}"></div>
-            </div>
-
-            <div ng-if="parentIndex == gameFieldIndex" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
-                <div class="border-bottom cell cell{{f}}"></div>
-            </div>
-
-
-
-
         </div>
     </div>
 
     <div class="scoreboard">
-        <p>Score:</p>
+        <h2>Score:</h2>
+
         <div class="white" ng-class="{act: whosNext == 'white'}">{{score.white}}</div>
         <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
+    </div>
+    <div class="buttons">
         <div class="pass-button btn btn-default" ng-click="pass()">Pass {{operate}}</div>
     </div>
 </div>
-<div class="status-line">
-    <div >{{status}}</div>
-    <div ng-class="errorState ? 'bg-danger': 'bg-success'">{{setStoneState.message}}</div>
+<div class="statusrow row">
+    <div class="status-line">
+        <div>{{status}}</div>
+        <div ng-class="errorState ? 'bg-danger': 'bg-success'">{{setStoneState.message}}</div>
+    </div>
 </div>
-
