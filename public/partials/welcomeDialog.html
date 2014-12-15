@@ -1,13 +1,13 @@
 <md-dialog>
-    <md-content>Hello {{ employee }}!Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.Build amazing apps on any platform with one single code base on top of the powerful Ionic Framework.
-From the UI, to design tools and backend services like analytics and push notifications. Ionic has it all.</md-content>
+    <md-content>Hello
+    <div ng-repeat="game in allGames">
+        <div>Player1: {{game.player1}}</div>
+        <div>Player2: {{game.player2}}</div>
+        <div>GameId: {{game.gameId}}</div>
+        <br>
+    </div>
+
+</md-content>
         <div class="md-actions">
             <md-button ng-click="closeDialog()">
                 Close Greeting
