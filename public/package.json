@@ -9,7 +9,7 @@
     "devDependencies": {
         "bower": "latest"
     },
-
+    "postinstall": "bower install",
     "engines": {
         "node": "1.3.12"
     },
