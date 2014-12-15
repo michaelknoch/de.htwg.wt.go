@@ -22,7 +22,6 @@ public class GameFieldObserver implements IObserver {
     @Override
     public void update(Event arg0) {
         out.write(staticHelpers.getGameField().toString());
-        System.out.println("WUI was updated");
     }
 
 }
