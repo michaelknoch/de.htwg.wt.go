@@ -2,6 +2,7 @@ package controllers;
 
 import de.htwg.go.Go;
 import de.htwg.go.controller.IGoController;
+import model.GameInstance;
 import play.libs.Json;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -19,12 +20,23 @@ import java.util.Arrays;
 public class Application extends Controller {
     static IGoController controller = Go.getInstance().getController();
     static ArrayList<String> clientList = new ArrayList<String>();
+    static ArrayList<GameInstance> gameInstances = new ArrayList<GameInstance>();
 
     public static Result index() {
         System.out.println("new client");
+        System.out.println(session("newuser"));
         session("connected", "");
         //clientList.add(session("connected"));
         return ok(views.html.index.render(controller.getStatus()));
+    }
+
+    public static Result createNewGame(String player1) {
+        ObjectNode result = Json.newObject();
+        IGoController game = Go.getInstance().getController();
+        GameInstance gameInstance = new GameInstance(player1, game);
+        gameInstances.add(gameInstance);
+        result.put("status", "success");
+        return ok(result);
     }
 
     /**
@@ -40,6 +52,7 @@ public class Application extends Controller {
     public static Result addNewPlayer(String name) {
         ObjectNode result = Json.newObject();
         clientList.add(name);
+        session("username", name);
         int index = clientList.indexOf(name);
         result.put("playernr", index);
         return ok(result);
