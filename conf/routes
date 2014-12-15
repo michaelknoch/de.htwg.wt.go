@@ -10,6 +10,7 @@ GET     /getNext                    controllers.Application.getNext()
 GET     /operate                    controllers.Application.operate()
 GET     /test                       controllers.Application.test()
 GET     /createNewGame/:player1     controllers.Application.createNewGame(player1: String)
+GET     /joinGame/:gameId/:player2  controllers.Application.joinGame(gameId: Integer, player2: String)
 
 GET     /connectWebSocket           controllers.Application.connectWebSocket()
 

@@ -37,6 +37,12 @@ angular.module('goApp')
 angular.module('goApp')
     .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog, WelcomeService) {
         $scope.allGames = {};
+        $scope.newPlayerName = '';
+
+        $scope.joinGame = function(gameId, newPlayerName) {
+            console.log(newPlayerName)
+            WelcomeService.joinGame(gameId, newPlayerName).then($scope.closeDialog);
+        };
 
         function fetchGames() {
             WelcomeService.getAllPlayers().then(function(res) {

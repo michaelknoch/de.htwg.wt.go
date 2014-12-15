@@ -16,16 +16,20 @@ import scala.util.parsing.json.JSONArray;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Application extends Controller {
     static IGoController controller = new GoController();
     static ArrayList<String> clientList = new ArrayList<String>();
-    static ArrayList<GameInstance> gameInstances = new ArrayList<GameInstance>();
+    static Map<Integer, GameInstance> gameInstances = new HashMap<Integer, GameInstance>();
 
     public static Result index() {
         System.out.println("new client");
         System.out.println(session("newuser"));
+        System.out.println(session("gameId"));
+
         session("connected", "");
         //clientList.add(session("connected"));
         return ok(views.html.index.render(controller.getStatus()));
@@ -35,14 +39,19 @@ public class Application extends Controller {
         ObjectNode result = Json.newObject();
         GoController game = new GoController();
         GameInstance gameInstance = new GameInstance(player1, game);
+
+        session("gameId", gameInstance.gameId+ "");
         // add new instance to ArrayList
-        gameInstances.add(gameInstance);
+        gameInstances.put(gameInstance.gameId, gameInstance);
         result.put("status", "success");
         return ok(result);
     }
 
-    public static Result joinGame() {
-        return ok("asd");
+    public static Result joinGame(int gameId, String player2) {
+        GameInstance gameInstance = gameInstances.get(gameId);
+        session("gameId", gameId + "");
+        gameInstance.setPlayer2(player2);
+        return ok(Json.toJson(gameInstance));
     }
 
     /**

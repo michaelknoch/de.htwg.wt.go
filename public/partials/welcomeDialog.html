@@ -1,11 +1,35 @@
 <md-dialog>
-    <md-content>Hello
-    <div ng-repeat="game in allGames">
-        <div>Player1: {{game.player1}}</div>
-        <div>Player2: {{game.player2}}</div>
-        <div>GameId: {{game.gameId}}</div>
-        <br>
-    </div>
+    <md-content>
+
+    <md-tabs md-selected="data.selectedIndex">
+      <md-tab id="tab1" aria-controls="tab1-content">
+       Join Game
+      </md-tab>
+
+      <md-tab id="tab2" aria-controls="tab2-content" ng-disabled="data.secondLocked">
+        Start new Game
+      </md-tab>
+    </md-tabs>
+
+
+    <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
+             Your name: <input type="text" ng-model="newPlayerName">
+            <div ng-repeat="game in allGames" ng-click="joinGame(game.gameId, newPlayerName)">
+                <div>Player1: {{game.player1}}</div>
+                <div>Player2: {{game.player2}}</div>
+                <div>GameId: {{game.gameId}}</div>
+                <br>
+            </div>
+        </div>
+        <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
+            ads
+        </div>
+
+    </ng-switch>
+
+
+
 
 </md-content>
         <div class="md-actions">
