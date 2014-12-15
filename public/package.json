@@ -7,11 +7,11 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "devDependencies": {
-        "bower": "~0.4.5"
+        "bower": "latest"
     },
 
     "engines": {
-        "node": "~0.10.0"
+        "node": "1.3.12"
     },
     "private": true,
 
