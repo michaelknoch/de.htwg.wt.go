@@ -5,13 +5,50 @@
         <div ng-click="createNewField(size)">createNewField</div>
         <input type="number" ng-model="size">
     </div>
+    <div class="row menu-bar">
+
+            <md-toolbar md-theme="green">
+                <h1 class="md-toolbar-tools">
+                    <md-button class="md-fab md-primary" aria-label="new game">
+                        <md-tooltip>
+                            New game
+                        </md-tooltip>
+                        <span class="glyphicon glyphicon-plus" ></span>
+                        </md-icon>
+                    </md-button>
+                </h1>
+            </md-toolbar>
+
+
+
+    </div>
 </div>
 <div class="row">
     <div class="gamefield">
         <div class="line" ng-repeat="field in gameField" ng:init="parentIndex = $index">
-            <div class=""  ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
-                <div class="cell cell{{f}}"></div>
+            <div ng-if="parentIndex == 0" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                <div class="border-top cell cell{{f}}"></div>
             </div>
+
+            <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index == 0" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                <div class="border-left cell cell{{f}}"></div>
+            </div>
+
+            <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index > 0 && $index < gameFieldIndex" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                <div class="cell cell{{f}} {{$index}}"></div>
+            </div>
+
+            <div ng-if="parentIndex > 0 && parentIndex < gameFieldIndex && $index == gameFieldIndex" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                <div class="border-right cell cell{{f}} {{$index}}"></div>
+            </div>
+
+            <div ng-if="parentIndex == gameFieldIndex" ng-repeat="f in field track by $index" ng-click="setStone(parentIndex, $index)">
+                <div class="border-bottom cell cell{{f}}"></div>
+            </div>
+
+
+
+
         </div>
     </div>
 

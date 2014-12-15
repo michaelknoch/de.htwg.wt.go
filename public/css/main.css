@@ -80,3 +80,7 @@
    border-color: #ccc;
    outline: none;
 }
+
+.menu-bar {
+    padding: 50px 0;
+}
