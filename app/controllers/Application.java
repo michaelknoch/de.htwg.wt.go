@@ -11,36 +11,31 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import model.GameFieldObserver;
 import play.mvc.WebSocket;
-import scala.util.parsing.json.JSONArray;
+import scala.util.parsing.json.JSONObject;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
 public class Application extends Controller {
-    static IGoController controller = new GoController();
-    static ArrayList<String> clientList = new ArrayList<String>();
     static Map<Integer, GameInstance> gameInstances = new HashMap<Integer, GameInstance>();
 
     public static Result index() {
         System.out.println("new client");
         System.out.println(session("newuser"));
         System.out.println(session("gameId"));
-
         session("connected", "");
         //clientList.add(session("connected"));
-        return ok(views.html.index.render(controller.getStatus()));
+        return ok(views.html.index.render());
     }
 
     public static Result createNewGame(String player1) {
         ObjectNode result = Json.newObject();
-        GoController game = new GoController();
+        IGoController game = new GoController();
         GameInstance gameInstance = new GameInstance(player1, game);
 
-        session("gameId", gameInstance.gameId+ "");
+        session("gameId", gameInstance.gameId + "");
         // add new instance to ArrayList
         gameInstances.put(gameInstance.gameId, gameInstance);
         result.put("status", "success");
@@ -54,29 +49,24 @@ public class Application extends Controller {
         return ok(Json.toJson(gameInstance));
     }
 
+    public static Result getAllPlayers() {
+        ObjectNode result = Json.newObject();
+        Iterator it = gameInstances.entrySet().iterator();
+        while(it.hasNext()) {
+            result.put("a", Json.toJson(it.next()));
+        }
+        //result.put("players", new JSONObject(gameInstances));
+        return ok(result);
+    }
+
     /**
      * TODO: remove
      *
      * @return
      */
     public static Result test() {
-        System.out.println(clientList.size());
+        System.out.println(gameInstances.size());
         return ok("ok");
-    }
-
-    public static Result addNewPlayer(String name) {
-        ObjectNode result = Json.newObject();
-        clientList.add(name);
-        session("username", name);
-        int index = clientList.indexOf(name);
-        result.put("playernr", index);
-        return ok(result);
-    }
-
-    public static Result getAllPlayers() {
-        ObjectNode result = Json.newObject();
-        result.put("players", Json.toJson(gameInstances));
-        return ok(result);
     }
 
     /**
@@ -87,7 +77,10 @@ public class Application extends Controller {
      * @return
      */
     public static Result createNewField(String size) {
-        controller.createField(Integer.parseInt(size));
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+
+        gameInstance.getController().createField(Integer.parseInt(size));
         return ok("new Field created " + size + " x " + size);
     }
 
@@ -99,6 +92,9 @@ public class Application extends Controller {
      */
     public static Result setStone() {
         JsonNode json = request().body().asJson();
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+
         ObjectNode result = Json.newObject();
         if (json == null) {
             return badRequest("Expecting Json data");
@@ -107,30 +103,34 @@ public class Application extends Controller {
             String propY = json.findValue("y").toString();
             int intY = Integer.parseInt(propY);
             int intX = Integer.parseInt(propX);
-            boolean status = controller.setStone(intX, intY);
+            boolean status = gameInstance.getController().setStone(intX, intY);
             if (!status) {
                 result.put("status", "ERROR");
                 result.put("statusCode", 400);
-                result.put("message", controller.getStatus());
+                result.put("message", gameInstance.getController().getStatus());
                 return badRequest(result);
             } else {
                 result.put("status", "OK");
                 result.put("statusCode", 200);
-                result.put("message", controller.getStatus());
+                result.put("message", gameInstance.getController().getStatus());
                 return ok(result);
             }
         }
     }
 
     public static Result getStatus() {
-        return ok(controller.getStatus());
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+        return ok(gameInstance.getController().getStatus());
     }
 
 
     public static Result getScore() {
         ObjectNode result = Json.newObject();
-        result.put("white", controller.getwhitePlayerScore());
-        result.put("black", controller.getblackPlayerScore());
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+        result.put("white", gameInstance.getController().getwhitePlayerScore());
+        result.put("black", gameInstance.getController().getblackPlayerScore());
         return ok(result);
     }
 
@@ -139,22 +139,29 @@ public class Application extends Controller {
     }
 
     public static Result getNext() {
-        return ok(controller.getNext());
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+        return ok(gameInstance.getController().getNext());
     }
 
     public static Result pass() {
-        return ok(controller.pass() + "");
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+        return ok(gameInstance.getController().pass() + "");
     }
 
     public static Result operate() {
-        return ok(controller.getOperate() + "");
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+        return ok(gameInstance.getController().getOperate() + "");
     }
 
     public static WebSocket<String> connectWebSocket() {
         return new WebSocket<String>() {
-
+            int gameId = Integer.parseInt(session("gameId"));
+            GameInstance gameInstance = gameInstances.get(gameId);
             public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
-                new GameFieldObserver(controller, out);
+                new GameFieldObserver(gameInstance.getController(), out);
             }
 
         };
