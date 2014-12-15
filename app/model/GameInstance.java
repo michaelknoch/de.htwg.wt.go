@@ -1,5 +1,6 @@
 package model;
 
+import de.htwg.go.controller.IGoController;
 import de.htwg.go.controller.impl.GoController;
 
 /**
@@ -8,10 +9,10 @@ import de.htwg.go.controller.impl.GoController;
 public class GameInstance {
     private String player1;
     private String player2;
-    private GoController controller;
+    private IGoController controller;
     public final int gameId;
 
-    public GameInstance(String name, GoController controller) {
+    public GameInstance(String name, IGoController controller) {
         this.player1 = name;
         this.player2 = "anonym";
         this.controller = controller;
@@ -28,6 +29,8 @@ public class GameInstance {
     public String getPlayer2() {
         return this.player2;
     }
-
+    public IGoController getController() {
+        return this.controller;
+    }
 
 }
