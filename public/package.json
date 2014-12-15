@@ -1,0 +1,19 @@
+{
+    "name": "client-app",
+    "version": "0.0.2",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "bower": "~0.4.5"
+    },
+
+    "engines": {
+        "node": "~0.10.0"
+    },
+    "private": true,
+
+    "license": "MIT"
+}
