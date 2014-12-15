@@ -35,10 +35,19 @@ angular.module('goApp')
     });
 
 angular.module('goApp')
-    .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog) {
+    .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog, WelcomeService) {
+        $scope.allGames = {};
+
+        function fetchGames() {
+            WelcomeService.getAllPlayers().then(function(res) {
+                $scope.allGames = res.data.players;
+            });
+        }
+
         $scope.closeDialog = function() {
             $mdDialog.hide().then(function() {
                 $state.go('game');
             });
         };
+        fetchGames();
     });
