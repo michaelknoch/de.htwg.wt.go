@@ -9,12 +9,21 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import model.GameFieldObserver;
 import play.mvc.WebSocket;
+import scala.util.parsing.json.JSONArray;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Application extends Controller {
     static IGoController controller = Go.getInstance().getController();
+    static ArrayList<String> clientList = new ArrayList<String>();
 
     public static Result index() {
+        System.out.println("new client");
+        session("connected", "");
+        //clientList.add(session("connected"));
         return ok(views.html.index.render(controller.getStatus()));
     }
 
@@ -24,7 +33,22 @@ public class Application extends Controller {
      * @return
      */
     public static Result test() {
-        return ok(controller.tuiToString());
+        System.out.println(clientList.size());
+        return ok("ok");
+    }
+
+    public static Result addNewPlayer(String name) {
+        ObjectNode result = Json.newObject();
+        clientList.add(name);
+        int index = clientList.indexOf(name);
+        result.put("playernr", index);
+        return ok(result);
+    }
+
+    public static Result getAllPlayers() {
+        ObjectNode result = Json.newObject();
+        result.put("players", Json.toJson(clientList));
+        return ok(result);
     }
 
     /**

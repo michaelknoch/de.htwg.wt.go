@@ -8,10 +8,13 @@ GET     /getScore                   controllers.Application.getScore()
 GET     /getGameField               controllers.Application.getGameField()
 GET     /getNext                    controllers.Application.getNext()
 GET     /operate                    controllers.Application.operate()
+GET     /test                       controllers.Application.test()
 
 GET     /connectWebSocket           controllers.Application.connectWebSocket()
 
 POST    /setStone                   controllers.Application.setStone()
+GET     /addNewPlayer/:name         controllers.Application.addNewPlayer(name: String)
+GET     /getAllPlayers              controllers.Application.getAllPlayers()
 POST    /createNewField/:size       controllers.Application.createNewField(size)
 POST    /pass                       controllers.Application.pass()
 
