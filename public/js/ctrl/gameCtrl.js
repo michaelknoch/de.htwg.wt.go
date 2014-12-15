@@ -57,6 +57,8 @@ angular.module('goApp')
             var promise = GameService.getGameField();
             promise.then(function(resp) {
                 $scope.gameField = resp.data.gamefield;
+                $scope.gameFieldIndex = $scope.gameField.length - 1;
+
             });
         };
 
@@ -89,7 +91,6 @@ angular.module('goApp')
         }
 
         //bootstrap gamefield
-        $scope.getGameField();
         fetchInformation();
         //$interval(fetchInformation, 10000);
     });
