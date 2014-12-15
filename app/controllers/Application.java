@@ -41,6 +41,10 @@ public class Application extends Controller {
         return ok(result);
     }
 
+    public static Result joinGame() {
+        return ok("asd");
+    }
+
     /**
      * TODO: remove
      *
@@ -62,7 +66,7 @@ public class Application extends Controller {
 
     public static Result getAllPlayers() {
         ObjectNode result = Json.newObject();
-        result.put("players", Json.toJson(clientList));
+        result.put("players", Json.toJson(gameInstances));
         return ok(result);
     }
 
