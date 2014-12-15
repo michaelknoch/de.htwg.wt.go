@@ -14,8 +14,6 @@
     float: left;
 }
 .gamefield {
-    width: 495px;
-    height: 495px;
     float: left;
 }
 .gamefield .cell2 {
@@ -131,4 +129,9 @@ body {
 
 .field-wrapper {
     float: left;
+}
+
+.sidebar-right {
+    float: left;
+    max-width: 200px;
 }

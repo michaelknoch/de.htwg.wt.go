@@ -38,15 +38,16 @@
             </div>
         </div>
     </div>
+    <div class="sidebar-right">
+        <div class="scoreboard">
+            <h2>Score:</h2>
 
-    <div class="scoreboard">
-        <h2>Score:</h2>
-
-        <div class="white" ng-class="{act: whosNext == 'white'}">{{score.white}}</div>
-        <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
-    </div>
-    <div class="buttons">
-        <div class="pass-button btn btn-default" ng-click="pass()">Pass {{operate}}</div>
+            <div class="white" ng-class="{act: whosNext == 'white'}">{{score.white}}</div>
+            <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
+        </div>
+        <div class="buttons">
+            <div class="pass-button btn btn-default" ng-click="pass()">Pass {{operate}}</div>
+        </div>
     </div>
 </div>
 <div class="statusrow row">
