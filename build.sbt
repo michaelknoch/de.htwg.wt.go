@@ -2,7 +2,7 @@ import play.Project._
 
 name := """hello-play-java"""
 
-version := "1.2.4"
+version := "1.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.2.2", 
