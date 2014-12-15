@@ -30,7 +30,6 @@ angular.module('goApp')
             // When the 'enter' animation finishes...
             function afterShowAnimation(scope, element, options) {
                 // post-show code here: DOM element focus, etc.
-                debugger;
             }
         }
     });
@@ -38,15 +37,8 @@ angular.module('goApp')
 angular.module('goApp')
     .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog) {
         $scope.closeDialog = function() {
-            $mdDialog.hide({
-                onComplete: afterShowAnimation
+            $mdDialog.hide().then(function() {
+                $state.go('game');
             });
-            $state.go('game');
-
         };
-
-
-        function afterShowAnimation() {
-
-        }
     });

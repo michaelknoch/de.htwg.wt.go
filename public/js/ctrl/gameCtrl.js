@@ -11,16 +11,23 @@ angular.module('goApp')
     .controller('GameCtrl', function($scope, $rootScope, $state, GameService, $interval) {
         $scope.errorState = false;
         $scope.gameField = [];
-        var connection = new WebSocket('ws://localhost:9000/connectWebSocket');
 
-        connection.onmessage = function(msg) {
-            var data = JSON.parse(msg.data);
-            $scope.gameField = data.gamefield;
-            $scope.score = data.score;
-            $scope.whosNext = data.next;
-            $scope.operate = data.operate;
-            $scope.$apply();
-        };
+
+        var socketUrl = 'ws://' + location.host + '/connectWebSocket';
+        var connection = new WebSocket(socketUrl);
+        initWebsockets();
+
+        function initWebsockets() {
+            connection.onmessage = function(msg) {
+                var data = JSON.parse(msg.data);
+                $scope.gameField = data.gamefield;
+                $scope.score = data.score;
+                $scope.whosNext = data.next;
+                $scope.operate = data.operate;
+                $scope.$apply();
+            };
+        }
+
 
         $scope.setStone = function(x, y) {
             var promise = GameService.setStone({
@@ -33,17 +40,15 @@ angular.module('goApp')
             }).then(function(resp) {
                 $scope.errorState = false;
                 $scope.setStoneState = resp;
-                //$scope.getGameField();
-                //fetchInformation();
             });
         };
 
         $scope.getStatus = function() {
             GameService.getStatus().error(function(err) {
-                alert(err);
+                console.log(err);
             }).then(function(resp) {
                 $scope.status = resp.data;
-                var regex = /black is next/;
+                var regex = /black is next /;
                 var regex2 = /black is still next/;
                 if ($scope.status.match(regex) || $scope.status.match(regex2)) {
                     $scope.whosNext = 'black';
