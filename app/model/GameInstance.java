@@ -29,6 +29,9 @@ public class GameInstance {
     public String getPlayer2() {
         return this.player2;
     }
+    public int getGameId() {
+        return this.gameId;
+    }
     public IGoController getController() {
         return this.controller;
     }
