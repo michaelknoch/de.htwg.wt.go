@@ -11,7 +11,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import model.GameFieldObserver;
 import play.mvc.WebSocket;
-import scala.util.parsing.json.JSONObject;
+import org.json.simple.JSONObject;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -50,13 +50,17 @@ public class Application extends Controller {
     }
 
     public static Result getAllPlayers() {
-        ObjectNode result = Json.newObject();
-        Iterator it = gameInstances.entrySet().iterator();
-        while(it.hasNext()) {
-            result.put("a", Json.toJson(it.next()));
+        JSONObject result = new JSONObject();
+        for(Integer x : gameInstances.keySet()) {
+
+            /*result.putArray(String.valueOf(x));
+            result.get(String.valueOf(x));
+            result.put("gameId" , String.valueOf(x));
+            result.put("player1" , Json.toJson(gameInstances.get(x).getPlayer1()));
+            result.put("player2" , Json.toJson(gameInstances.get(x).getPlayer2()));*/
         }
         //result.put("players", new JSONObject(gameInstances));
-        return ok(result);
+        return ok(result.toString());
     }
 
     /**
