@@ -1,9 +1,9 @@
 
 .cell {
-    width: 55px;
-    height: 55px;
+
     float:left;
     background: url('../images/cells/cell.png');
+    background-size: 100%;
 }
 .cell:hover {
     /*background: url('../images/bwStone.png') no-repeat center center;*/
@@ -22,10 +22,7 @@
 .gamefield .cell1 {
     background: url('../images/whiteStone.png') no-repeat center center;
 }
-.scoreboard {
-    width: 200px;
-    float: right;
-}
+
 .scoreboard .white, .scoreboard .black {
     width: 67px;
     height: 43px;
@@ -44,7 +41,6 @@
 
 .status-line {
     float: left;
-    padding: 10px 0;
 }
 
 * {
@@ -90,41 +86,37 @@
 
 body {
     background: none !important;
-    overflow: hidden;
 }
 
 .gamefield {
-    background: rgba(255, 255,255, 0.3);
-    padding: 20px;
     box-sizing: content-box;
+}
+
+.field-wrapper {
+    background: rgba(255, 255,255, 0.3);
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .scoreboard {
     background: rgba(255, 255,255, 0.5);
     float: left;
-    margin-left: 3px;
     height: 100%;
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
-.statusrow {
+.status-line {
     margin-top: 3px;
     background: rgba(255, 255,255, 0.5);
-    padding-left: 10px;
-    float: left;
-    width: 100%;
-    max-width: 535px;
 }
 
 .buttons {
-    float: left;
-    width: 200px;
-    margin-left: 3px;
+    width: 100%;
 }
 
 .buttons .btn {
-    background: rgba(255,255,255,0.8);
     border-radius: 0;
+    width: 100%;
 }
 
 .field-wrapper {
@@ -133,5 +125,4 @@ body {
 
 .sidebar-right {
     float: left;
-    max-width: 200px;
 }
