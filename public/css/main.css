@@ -124,7 +124,9 @@ body {
 .field-wrapper {
     float: left;
 }
-
+.welcome-tab {
+    min-width: 400px;
+}
 
 @media (max-width: 767px) {
     .sidebar-right {
@@ -136,4 +138,6 @@ body {
         padding-left: 40px;
         padding-right: 60px;
     }
-}
+
+
+
