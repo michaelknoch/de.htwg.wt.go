@@ -51,8 +51,10 @@ angular.module('goApp')
             });
         }
 
-        $scope.createNewGame = function() {
-            WelcomeService.getAllPlayers($scope.newPlayerName, $scope.newGameFieldSize).then(function(res) {
+        $scope.createNewGame = function(name) {
+            //var name = $scope.newPlayerName;
+            debugger;
+            WelcomeService.createNewGame(name, $scope.newGameFieldSize).then(function(res) {
                 debugger;
                 localStorage.setItem("gameId", res.data.session);
                 $state.go('game');
