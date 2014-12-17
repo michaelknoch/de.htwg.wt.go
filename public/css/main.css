@@ -3,7 +3,7 @@
 
     float:left;
     background: url('../images/cells/cell.png');
-    background-size: 100%;
+    background-size: 60%;
 }
 .cell:hover {
     /*background: url('../images/bwStone.png') no-repeat center center;*/
@@ -18,9 +18,11 @@
 }
 .gamefield .cell2 {
     background: url('../images/blackStone.png') no-repeat center center;
+    background-size: 60%;
 }
 .gamefield .cell1 {
     background: url('../images/whiteStone.png') no-repeat center center;
+    background-size: 60%;
 }
 
 .scoreboard .white, .scoreboard .black {
@@ -73,19 +75,18 @@
 }
 
 .back {
-    min-height: 120vh;
-    min-width: 110vw;
+    min-height: 100vh;
+    width: 100%;
+    -webkit-transform: scale(1.2);
     position: absolute;
     z-index: -1;
     background: url('../images/hipster_back.jpg') no-repeat center center;
     -webkit-filter: blur(15px);
-    margin-left: -30px;
-    margin-top: -20px;
-    overflow: hidden;
 }
 
 body {
     background: none !important;
+    overflow: hidden;
 }
 
 .gamefield {
@@ -103,6 +104,7 @@ body {
     float: left;
     height: 100%;
     padding-left: 15px;
+    width: 100%;
 }
 
 .status-line {
@@ -123,6 +125,15 @@ body {
     float: left;
 }
 
-.sidebar-right {
-    float: left;
+
+@media (max-width: 767px) {
+    .sidebar-right {
+        margin-left: -15px;
+        box-sizing: content-box;
+    }
+
+    .scoreboard .white, .scoreboard .black {
+        padding-left: 40px;
+        padding-right: 60px;
+    }
 }
