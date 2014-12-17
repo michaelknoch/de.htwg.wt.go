@@ -36,7 +36,7 @@ public class Application extends Controller {
         session("gameId", gameInstance.gameId + "");
         // add new instance to ArrayList
         gameInstances.put(gameInstance.gameId, gameInstance);
-        result.put("status", "success");
+        result.put("session", gameInstance.gameId + "");
         return ok(JSONValue.toJSONString(result));
     }
 
