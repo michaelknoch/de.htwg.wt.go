@@ -130,3 +130,10 @@ body {
 .welcome-tab {
     min-width: 400px;
 }
+.tabs-container {
+    margin: 0 0 20px;
+}
+.welcome-static-height {
+    height: 300px;
+    overflow-y: scroll;
+}
