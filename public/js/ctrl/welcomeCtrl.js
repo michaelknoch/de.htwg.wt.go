@@ -51,6 +51,14 @@ angular.module('goApp')
             });
         }
 
+        $scope.createNewGame = function() {
+            WelcomeService.getAllPlayers($scope.newPlayerName, $scope.newGameFieldSize).then(function(res) {
+                debugger;
+                localStorage.setItem("gameId", res.data.session);
+                $state.go('game');
+            }).then($scope.closeDialog);
+        };
+
         $scope.closeDialog = function() {
             $mdDialog.hide().then(function() {
                 $state.go('game');
