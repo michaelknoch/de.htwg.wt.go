@@ -19,5 +19,6 @@ angular.module('goApp', ['ui.router', 'ngMaterial'])
             }).state('game', {
                 url: '/game',
                 templateUrl: 'assets/partials/game.html',
-        controller: 'GameCtrl'
-});});
+                controller: 'GameCtrl'
+            });
+    });
