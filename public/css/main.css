@@ -126,3 +126,7 @@ body {
 .sidebar-right {
     float: left;
 }
+
+.welcome-tab {
+    min-width: 400px;
+}
