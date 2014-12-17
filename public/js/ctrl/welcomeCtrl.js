@@ -38,6 +38,7 @@ angular.module('goApp')
     .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog, WelcomeService) {
         $scope.allGames = {};
         $scope.newPlayerName = '';
+        $scope.newGameFieldSize = 9;
 
         $scope.joinGame = function(gameId, newPlayerName) {
             console.log(newPlayerName)
