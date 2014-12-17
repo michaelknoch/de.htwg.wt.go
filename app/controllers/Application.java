@@ -12,10 +12,9 @@ import play.mvc.Result;
 import model.GameFieldObserver;
 import play.mvc.WebSocket;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 
 public class Application extends Controller {
@@ -50,17 +49,17 @@ public class Application extends Controller {
     }
 
     public static Result getAllPlayers() {
-        JSONObject result = new JSONObject();
-        for(Integer x : gameInstances.keySet()) {
+        Map m1 = new LinkedHashMap();
+        List l1 = new LinkedList();
 
-            /*result.putArray(String.valueOf(x));
-            result.get(String.valueOf(x));
-            result.put("gameId" , String.valueOf(x));
-            result.put("player1" , Json.toJson(gameInstances.get(x).getPlayer1()));
-            result.put("player2" , Json.toJson(gameInstances.get(x).getPlayer2()));*/
+        for(Integer x : gameInstances.keySet()) {
+            m1.put("gameId", String.valueOf(x));
+            m1.put("player1", Json.toJson(gameInstances.get(x).getPlayer1()));
+            m1.put("player2", Json.toJson(gameInstances.get(x).getPlayer2()));
+            l1.add(m1);
         }
-        //result.put("players", new JSONObject(gameInstances));
-        return ok(result.toString());
+        String jsonText = JSONValue.toJSONString(l1);
+        return ok(jsonText);
     }
 
     /**
