@@ -1,9 +1,8 @@
 
 .cell {
-
     float:left;
     background: url('../images/cells/cell.png');
-    background-size: 60%;
+    background-size: 100%;
 }
 .cell:hover {
     /*background: url('../images/bwStone.png') no-repeat center center;*/
@@ -18,11 +17,11 @@
 }
 .gamefield .cell2 {
     background: url('../images/blackStone.png') no-repeat center center;
-    background-size: 60%;
+    background-size: 100%;
 }
 .gamefield .cell1 {
     background: url('../images/whiteStone.png') no-repeat center center;
-    background-size: 60%;
+    background-size: 100%;
 }
 
 .scoreboard .white, .scoreboard .black {
