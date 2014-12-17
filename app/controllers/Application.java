@@ -49,10 +49,11 @@ public class Application extends Controller {
     }
 
     public static Result getAllPlayers() {
-        Map m1 = new LinkedHashMap();
+
         List l1 = new LinkedList();
 
         for(Integer x : gameInstances.keySet()) {
+            Map m1 = new LinkedHashMap();
             m1.put("gameId", String.valueOf(x));
             m1.put("player1", Json.toJson(gameInstances.get(x).getPlayer1()));
             m1.put("player2", Json.toJson(gameInstances.get(x).getPlayer2()));
