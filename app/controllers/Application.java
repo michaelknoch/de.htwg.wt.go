@@ -6,7 +6,6 @@ import de.htwg.go.controller.impl.GoController;
 import model.GameInstance;
 import play.libs.Json;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import play.mvc.Controller;
 import play.mvc.Result;
 import model.GameFieldObserver;
@@ -29,30 +28,31 @@ public class Application extends Controller {
         return ok(views.html.index.render());
     }
 
-    public static Result createNewGame(String player1) {
-        ObjectNode result = Json.newObject();
+    public static Result createNewGame(String player1, int gameSize) {
+        Map result = new LinkedHashMap();
         IGoController game = new GoController();
         GameInstance gameInstance = new GameInstance(player1, game);
-
+        game.createField(gameSize);
         session("gameId", gameInstance.gameId + "");
         // add new instance to ArrayList
         gameInstances.put(gameInstance.gameId, gameInstance);
         result.put("status", "success");
-        return ok(result);
+        return ok(JSONValue.toJSONString(result));
     }
 
     public static Result joinGame(int gameId, String player2) {
         GameInstance gameInstance = gameInstances.get(gameId);
         session("gameId", gameId + "");
         gameInstance.setPlayer2(player2);
-        return ok(Json.toJson(gameInstance));
+        return ok(JSONValue.toJSONString(gameInstance));
     }
 
     public static Result getAllPlayers() {
-        Map m1 = new LinkedHashMap();
+
         List l1 = new LinkedList();
 
         for(Integer x : gameInstances.keySet()) {
+            Map m1 = new LinkedHashMap();
             m1.put("gameId", String.valueOf(x));
             m1.put("player1", Json.toJson(gameInstances.get(x).getPlayer1()));
             m1.put("player2", Json.toJson(gameInstances.get(x).getPlayer2()));
@@ -82,8 +82,8 @@ public class Application extends Controller {
     public static Result createNewField(String size) {
         int gameId = Integer.parseInt(session("gameId"));
         GameInstance gameInstance = gameInstances.get(gameId);
-
-        gameInstance.getController().createField(Integer.parseInt(size));
+        IGoController ctrl = gameInstance.getController();
+        ctrl.createField(Integer.parseInt(size));
         return ok("new Field created " + size + " x " + size);
     }
 
@@ -98,7 +98,7 @@ public class Application extends Controller {
         int gameId = Integer.parseInt(session("gameId"));
         GameInstance gameInstance = gameInstances.get(gameId);
 
-        ObjectNode result = Json.newObject();
+        Map result = new LinkedHashMap();
         if (json == null) {
             return badRequest("Expecting Json data");
         } else {
@@ -106,17 +106,19 @@ public class Application extends Controller {
             String propY = json.findValue("y").toString();
             int intY = Integer.parseInt(propY);
             int intX = Integer.parseInt(propX);
-            boolean status = gameInstance.getController().setStone(intX, intY);
+            IGoController ctrl = gameInstance.getController();
+            boolean status = ctrl.setStone(intX, intY);
+
             if (!status) {
                 result.put("status", "ERROR");
                 result.put("statusCode", 400);
-                result.put("message", gameInstance.getController().getStatus());
-                return badRequest(result);
+                result.put("message", ctrl.getStatus());
+                return badRequest(JSONValue.toJSONString(result));
             } else {
                 result.put("status", "OK");
                 result.put("statusCode", 200);
-                result.put("message", gameInstance.getController().getStatus());
-                return ok(result);
+                result.put("message", ctrl.getStatus());
+                return ok(JSONValue.toJSONString(result));
             }
         }
     }
@@ -129,12 +131,12 @@ public class Application extends Controller {
 
 
     public static Result getScore() {
-        ObjectNode result = Json.newObject();
+        Map m1 = new LinkedHashMap();
         int gameId = Integer.parseInt(session("gameId"));
         GameInstance gameInstance = gameInstances.get(gameId);
-        result.put("white", gameInstance.getController().getwhitePlayerScore());
-        result.put("black", gameInstance.getController().getblackPlayerScore());
-        return ok(result);
+        m1.put("white", gameInstance.getController().getwhitePlayerScore());
+        m1.put("black", gameInstance.getController().getblackPlayerScore());
+        return ok(JSONValue.toJSONString(m1));
     }
 
     public static Result getGameField() {

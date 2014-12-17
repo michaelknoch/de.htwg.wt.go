@@ -46,7 +46,7 @@ angular.module('goApp')
 
         function fetchGames() {
             WelcomeService.getAllPlayers().then(function(res) {
-                $scope.allGames = res.data.players;
+                $scope.allGames = res.data;
             });
         }
 
