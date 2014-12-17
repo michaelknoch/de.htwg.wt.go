@@ -140,7 +140,10 @@ public class Application extends Controller {
     }
 
     public static Result getGameField() {
-        return ok(staticHelpers.getGameField());
+        int gameId = Integer.parseInt(session("gameId"));
+        GameInstance gameInstance = gameInstances.get(gameId);
+        IGoController ctrl = gameInstance.getController();
+        return ok(staticHelpers.getGameField(ctrl));
     }
 
     public static Result getNext() {

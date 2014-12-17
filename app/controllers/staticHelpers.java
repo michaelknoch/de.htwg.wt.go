@@ -13,9 +13,8 @@ import java.util.Map;
  */
 public class staticHelpers {
 
-    static IGoController controller = Go.getInstance().getController();
-    public static ObjectNode getGameField() {
-        int fieldSize = controller.getGameFieldSize();
+    public static ObjectNode getGameField(IGoController ctrl) {
+        int fieldSize = ctrl.getGameFieldSize();
 
         ObjectNode result = Json.newObject();
 
@@ -23,18 +22,18 @@ public class staticHelpers {
 
         for (int i = 0; i < fieldSize; i++) {
             for (int j = 0; j < fieldSize; j++) {
-                field[i][j] = controller.getCellStatus(i, j) + "";
+                field[i][j] = ctrl.getCellStatus(i, j) + "";
             }
         }
 
         Map<String, Integer> score = new HashMap<String, Integer>();
-        score.put("white", controller.getwhitePlayerScore());
-        score.put("black", controller.getblackPlayerScore());
+        score.put("white", ctrl.getwhitePlayerScore());
+        score.put("black", ctrl.getblackPlayerScore());
 
         result.put("gamefield", Json.toJson(field));
-        result.put("next", Json.toJson(controller.getNext()));
+        result.put("next", Json.toJson(ctrl.getNext()));
         result.put("score", Json.toJson(score));
-        result.put("operate", Json.toJson(controller.getOperate()));
+        result.put("operate", Json.toJson(ctrl.getOperate()));
 
         return result;
     }
