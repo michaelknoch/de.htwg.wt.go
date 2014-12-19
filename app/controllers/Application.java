@@ -18,7 +18,6 @@ import java.util.*;
 
 public class Application extends Controller {
     static Map<Integer, GameInstance> gameInstances = new HashMap<Integer, GameInstance>();
-    static Map<Integer, WebSocket> sockets = new HashMap<Integer, WebSocket>();
 
     public static Result index() {
         System.out.println("new client");
@@ -165,8 +164,8 @@ public class Application extends Controller {
         return ok(gameInstance.getController().getOperate() + "");
     }
 
-    public static WebSocket<String> connectWebSocket(int gameId) {
-        WebSocket ws = new WebSocket<String>() {
+    public static WebSocket<String> connectWebSocket() {
+        return new WebSocket<String>() {
             int gameId = Integer.parseInt(session("gameId"));
             GameInstance gameInstance = gameInstances.get(gameId);
             public void onReady(WebSocket.In<String> in, WebSocket.Out<String> out) {
@@ -174,8 +173,6 @@ public class Application extends Controller {
             }
 
         };
-        sockets.put(gameId, ws);
-        return ws;
 
     }
 
