@@ -46,7 +46,7 @@ angular.module('goApp')
         };
 
         function fetchGames() {
-            if ($state.current.name === 'welcome') {
+            if ($state.is('welcome')) {
                 WelcomeService.getAllPlayers().then(function(res) {
                     $scope.allGames = res.data;
                 });
