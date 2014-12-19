@@ -35,7 +35,7 @@ angular.module('goApp')
     });
 
 angular.module('goApp')
-    .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog, WelcomeService) {
+    .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog, WelcomeService, $interval) {
         $scope.allGames = {};
         $scope.newPlayerName = '';
         $scope.newGameFieldSize = 9;
@@ -46,9 +46,12 @@ angular.module('goApp')
         };
 
         function fetchGames() {
-            WelcomeService.getAllPlayers().then(function(res) {
-                $scope.allGames = res.data;
-            });
+            if ($state.current.name === 'welcome') {
+                WelcomeService.getAllPlayers().then(function(res) {
+                    $scope.allGames = res.data;
+                });
+            }
+
         }
 
         $scope.createNewGame = function(name) {
@@ -64,4 +67,6 @@ angular.module('goApp')
             });
         };
         fetchGames();
+        $interval(fetchGames, 1500);
+
     });
