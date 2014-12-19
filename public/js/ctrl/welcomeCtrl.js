@@ -41,8 +41,11 @@ angular.module('goApp')
         $scope.newGameFieldSize = 9;
 
         $scope.joinGame = function(gameId, newPlayerName) {
-            console.log(newPlayerName)
-            WelcomeService.joinGame(gameId, newPlayerName).then($scope.closeDialog);
+            WelcomeService.joinGame(gameId, newPlayerName).then(function() {
+                $state.go('game', {
+                    gameId: gameId
+                });
+            });
         };
 
         function fetchGames() {
@@ -57,7 +60,9 @@ angular.module('goApp')
         $scope.createNewGame = function(name) {
             WelcomeService.createNewGame(name, $scope.newGameFieldSize).then(function(res) {
                 localStorage.setItem("gameId", res.data.session);
-                $state.go('game');
+                $state.go('game', {
+                    gameId: res.data.session
+                });
             }).then($scope.closeDialog);
         };
 

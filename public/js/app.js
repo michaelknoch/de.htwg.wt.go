@@ -17,7 +17,7 @@ angular.module('goApp', ['ui.router', 'ngMaterial'])
                 templateUrl: 'assets/partials/main.html',
                 controller: 'WelcomeCtrl'
             }).state('game', {
-                url: '/game',
+                url: '/game/:gameId',
                 templateUrl: 'assets/partials/game.html',
                 controller: 'GameCtrl'
             });
