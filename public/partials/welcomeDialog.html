@@ -14,21 +14,26 @@
 
     <ng-switch on="selectedIndex" class="tabpanel-container">
         <div role="tabpanel" id="tab1-content" class="welcome-tab" aria-labelledby="tab1" ng-switch-when="0">
+           <p> <div class="your-name">Your name: <input type="text" ng-model="newPlayerName"></div>
+             <md-divider></md-divider></p>
             <div class="welcome-static-height">
-             Your name: <input type="text" ng-model="newPlayerName">
+
             <div ng-repeat="game in allGames" ng-click="joinGame(game.gameId, newPlayerName)">
-                <div>Player1: {{game.player1}}</div>
-                <div>Player2: {{game.player2}}</div>
-                <div>GameId: {{game.gameId}}</div>
-                <br>
+                <div class="oneGame">
+                    <div>Player1: {{game.player1}}</div>
+                    <div>Player2: {{game.player2}}</div>
+                    <div>GameId: {{game.gameId}}</div>
+                </div>
+                <md-divider ng-if="!$last"></md-divider>
+
             </div>
             </div>
         </div>
         <div role="tabpanel" id="tab2-content" class="welcome-tab" aria-labelledby="tab2" ng-switch-when="1">
-            <div class="welcome-static-height">
-            <p>Your name: <input type="text" ng-model="player1"></p>
-            <p>Gamefield size: <input type="text" ng-model="newGameFieldSize"></p>
-            <p ng-click="createNewGame(player1)">Start new game</p>
+            <div class="welcome-static-height new-game">
+                <p>Your name: <input type="text" ng-model="player1"></p>
+                <p>Gamefield size: <input type="text" ng-model="newGameFieldSize"></p>
+                <p ng-click="createNewGame(player1)">Start new game</p>
             </div>
         </div>
 
@@ -38,9 +43,5 @@
 
 
 </md-content>
-        <div class="md-actions">
-            <md-button ng-click="closeDialog()">
-                Close Greeting
-            </md-button>
-        </div>
+
 </md-dialog>

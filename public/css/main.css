@@ -138,6 +138,33 @@ body {
     height: 300px;
     overflow-y: scroll;
 }
+.welcome-static-height::-webkit-scrollbar {
+    display: none;
+}
+
+.oneGame {
+    cursor: pointer;
+    margin: 0 !important;
+    padding: 10px 15px !important;
+    width: 100%;
+    float:left;
+}
+.oneGame:hover {
+    background: rgba(0,0,0,.1);
+}
+md-divider {
+    float:left;
+    clear: both;
+    width: 100%;
+}
+md-dialog md-content {
+    padding:0 !important;
+}
+
+.your-name, .new-game {
+    padding: 0 0 10px 15px;
+}
+
 
 @media (max-width: 767px) {
     .sidebar-right {
