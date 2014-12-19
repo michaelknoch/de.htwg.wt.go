@@ -23,6 +23,7 @@ angular.module('goApp')
                 templateUrl: 'assets/partials/welcomeDialog.html',
                 onComplete: afterShowAnimation,
                 controller: 'WelcomeDialogCtrl',
+                clickOutsideToClose: false,
                 locals: {
                     employee: $scope.userName
                 }
