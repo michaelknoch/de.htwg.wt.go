@@ -17,9 +17,10 @@
             <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
         </div>
         <div class="buttons">
-            <div class="pass-button btn btn-default" ng-click="pass()">Pass {{operate}}</div>
+            <div class="pass-button btn btn-default" ng-click="pass()">Pass</div>
+            <div class="close-button" ng-click="closeGame()">Close Game</div>
         </div>
-        <go-scoreboard></go-scoreboard>
+
     </div>
 </div>
 <div class="statusrow row">
