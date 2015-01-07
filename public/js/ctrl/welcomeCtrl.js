@@ -43,7 +43,7 @@ angular.module('goApp')
 
         $scope.joinGame = function(gameId, newPlayerName) {
             WelcomeService.joinGame(gameId, newPlayerName).then(function() {
-                localStorage.setItem("iAmwhite", false);
+                localStorage.setItem('myColor', 'black');
                 $mdDialog.hide().then(function() {
                     $state.go('game', {
                         gameId: gameId
@@ -65,7 +65,7 @@ angular.module('goApp')
         $scope.createNewGame = function(name) {
             WelcomeService.createNewGame(name, $scope.newGameFieldSize).then(function(res) {
                 localStorage.setItem("gameId", res.data.session);
-                localStorage.setItem("iAmwhite", true);
+                localStorage.setItem('myColor', 'white');
                 $state.go('game', {
                     gameId: res.data.session
                 });
