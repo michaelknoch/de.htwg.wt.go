@@ -22,7 +22,7 @@ angular.module('goApp')
                 var data = JSON.parse(msg.data);
 
                 if (!data.operate) {
-                    alive();
+                    notAlive();
                 }
 
                 $scope.gameField = data.gamefield;
@@ -33,7 +33,7 @@ angular.module('goApp')
             };
         }
 
-        function alive() {
+        function notAlive() {
 
             $scope.showConfirm = function(ev) {
                 var confirm = $mdDialog.confirm()
