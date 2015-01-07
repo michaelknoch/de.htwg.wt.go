@@ -39,7 +39,7 @@ angular.module('goApp')
     .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog, WelcomeService, $interval) {
         $scope.allGames = {};
         $scope.newPlayerName = '';
-        $scope.newGameFieldSize = 9;
+        $scope.newGameFieldSize;
 
         $scope.joinGame = function(gameId, newPlayerName) {
             WelcomeService.joinGame(gameId, newPlayerName).then(function() {
@@ -61,8 +61,8 @@ angular.module('goApp')
             }
         }
 
-        $scope.createNewGame = function(name) {
-            WelcomeService.createNewGame(name, $scope.newGameFieldSize).then(function(res) {
+        $scope.createNewGame = function(name, size) {
+            WelcomeService.createNewGame(name, size).then(function(res) {
                 localStorage.setItem("gameId", res.data.session);
                 localStorage.setItem('myColor', 'white');
                 $state.go('game', {

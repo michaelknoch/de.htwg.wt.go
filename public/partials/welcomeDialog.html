@@ -32,8 +32,8 @@
         <div role="tabpanel" id="tab2-content" class="welcome-tab" aria-labelledby="tab2" ng-switch-when="1">
             <div class="welcome-static-height new-game">
                 <p>Your name: <input type="text" ng-model="player1"></p>
-                <p>Gamefield size: <input type="text" ng-model="newGameFieldSize"></p>
-                <p ng-click="createNewGame(player1)">Start new game</p>
+                <p>Gamefield size: <input type="number" ng-model="newGameFieldSize"></p>
+                <p ng-click="createNewGame(player1, newGameFieldSize)">Start new game</p>
             </div>
         </div>
 

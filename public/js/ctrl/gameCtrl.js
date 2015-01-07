@@ -34,7 +34,6 @@ angular.module('goApp')
         }
 
         function notAlive() {
-
             $scope.showConfirm = function(ev) {
                 var confirm = $mdDialog.confirm()
                   .title('Game')
@@ -46,7 +45,6 @@ angular.module('goApp')
                 });
               };
             $scope.showConfirm();
-
         }
 
         $scope.setStone = function(x, y) {
@@ -131,7 +129,7 @@ angular.module('goApp')
         }
 
         $scope.myTurn = function() {
-            if (localStorage.getItem('myColor') == $scope.whosNext) {
+            if (localStorage.getItem('myColor') === $scope.whosNext) {
                 return true;
             } else {
                 return false;
