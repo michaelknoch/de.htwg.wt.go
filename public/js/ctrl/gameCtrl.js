@@ -36,10 +36,12 @@ angular.module('goApp')
             });
             promise.error(function(resp) {
                 $scope.errorState = true;
-                $scope.setStoneState = resp;
+                $scope.status = resp.message;
             }).then(function(resp) {
                 $scope.errorState = false;
-                $scope.setStoneState = resp;
+                //$scope.setStoneState = resp;
+                $scope.status = resp.data.message;
+
             });
         };
 
