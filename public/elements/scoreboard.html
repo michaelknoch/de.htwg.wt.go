@@ -3,6 +3,12 @@
 
 <polymer-element name="go-scoreboard" noscript>
     <template>
-        <span>I'm <b>my-element</b>. This is my Shadow DOM.</span>
+        <span>I'm <b>my-element</b>. This is my Shadow DOM.
+        {{score}} yolo</span>
     </template>
+    <script>
+    Polymer({
+      score: 'Daniel'
+    });
+  </script>
 </polymer-element>
