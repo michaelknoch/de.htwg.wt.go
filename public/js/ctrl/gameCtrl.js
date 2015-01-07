@@ -16,9 +16,15 @@ angular.module('goApp')
         var connection = new WebSocket(socketUrl);
         initWebsockets();
 
+
         function initWebsockets() {
             connection.onmessage = function(msg) {
                 var data = JSON.parse(msg.data);
+
+                if (!data.operate) {
+                    alive();
+                }
+
                 $scope.gameField = data.gamefield;
                 $scope.score = data.score;
                 $scope.whosNext = data.next;
@@ -28,23 +34,19 @@ angular.module('goApp')
         }
 
         function alive() {
-            GameService.getStatus().error(function(err) {
-                console.log(err);
-                //$state.go('welcome');
 
-                $scope.showConfirm = function(ev) {
-                    var confirm = $mdDialog.confirm()
-                      .title('Game')
-                      .content('The game has been closed! White Score: ' + $scope.score.white + ' Black Score: ' + $scope.score.black)
-                      .ok('Got it!')
-                      .targetEvent(ev);
-                    $mdDialog.show(confirm).then(function() {
-                      $state.go('welcome');
-                    });
-                  };
-                $scope.showConfirm();
+            $scope.showConfirm = function(ev) {
+                var confirm = $mdDialog.confirm()
+                  .title('Game')
+                  .content('The game has been closed! White Score: ' + $scope.score.white + ' Black Score: ' + $scope.score.black)
+                  .ok('Got it!')
+                  .targetEvent(ev);
+                $mdDialog.show(confirm).then(function() {
+                  $state.go('welcome');
+                });
+              };
+            $scope.showConfirm();
 
-            });
         }
 
         $scope.setStone = function(x, y) {
@@ -138,7 +140,6 @@ angular.module('goApp')
 
         $scope.closeGame = function() {
             GameService.closeGame();
-            alive();
         }
 
         //bootstrap gamefield

@@ -53,10 +53,14 @@ public class Application extends Controller {
 
         for(Integer x : gameInstances.keySet()) {
             Map m1 = new LinkedHashMap();
-            m1.put("gameId", String.valueOf(x));
-            m1.put("player1", Json.toJson(gameInstances.get(x).getPlayer1()));
-            m1.put("player2", Json.toJson(gameInstances.get(x).getPlayer2()));
-            l1.add(m1);
+
+            if (gameInstances.get(x).getController().getOperate()) {
+                m1.put("gameId", String.valueOf(x));
+                m1.put("player1", Json.toJson(gameInstances.get(x).getPlayer1()));
+                m1.put("player2", Json.toJson(gameInstances.get(x).getPlayer2()));
+                l1.add(m1);
+            }
+
         }
         String jsonText = JSONValue.toJSONString(l1);
         return ok(jsonText);
@@ -125,8 +129,7 @@ public class Application extends Controller {
 
     public static Result closeGame() {
         int gameId = Integer.parseInt(session("gameId"));
-        gameInstances.remove(gameId);
-
+        gameInstances.get(gameId).getController().stop();
         return ok();
     }
 
