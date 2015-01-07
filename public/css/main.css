@@ -17,11 +17,11 @@
 }
 .gamefield .cell2 {
     background: url('../images/blackStone.png') no-repeat center center;
-    background-size: 100%;
+    background-size: 80%;
 }
 .gamefield .cell1 {
     background: url('../images/whiteStone.png') no-repeat center center;
-    background-size: 100%;
+    background-size: 80%;
 }
 
 .scoreboard .white, .scoreboard .black {
