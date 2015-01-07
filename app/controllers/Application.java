@@ -20,11 +20,7 @@ public class Application extends Controller {
     static Map<Integer, GameInstance> gameInstances = new HashMap<Integer, GameInstance>();
 
     public static Result index() {
-        System.out.println("new client");
-        System.out.println(session("newuser"));
-        System.out.println(session("gameId"));
         session("connected", "");
-        //clientList.add(session("connected"));
         return ok(views.html.index.render());
     }
 
