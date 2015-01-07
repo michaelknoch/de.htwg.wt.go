@@ -30,6 +30,12 @@ angular.module('goApp')
 
 
         $scope.setStone = function(x, y) {
+            if (!$scope.myTurn()) {
+                $scope.errorState = true;
+                $scope.status = "It's not your turn, wait for opponent";
+                return;
+            }
+
             var promise = GameService.setStone({
                 x: x,
                 y: y
@@ -88,6 +94,12 @@ angular.module('goApp')
         };
 
         $scope.pass = function() {
+            if (!$scope.myTurn()) {
+                $scope.errorState = true;
+                $scope.status = "It's not your turn, wait for opponent";
+                return;
+            }
+
             GameService.pass();
         };
 
@@ -97,7 +109,14 @@ angular.module('goApp')
             $scope.getStatus();
         }
 
+        $scope.myTurn = function() {
+            if (localStorage.getItem('myColor') == $scope.whosNext) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
         //bootstrap gamefield
         fetchInformation();
-        //$interval(fetchInformation, 10000);
     });

@@ -59,7 +59,6 @@ angular.module('goApp')
                     $scope.allGames = res.data;
                 });
             }
-
         }
 
         $scope.createNewGame = function(name) {
