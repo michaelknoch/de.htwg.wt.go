@@ -24,6 +24,9 @@ angular.module('goApp')
         },
         pass: function() {
             return $http.post('/pass');
+        },
+        closeGame: function() {
+            return $http.post('/closeGame');
         }
     };
 });

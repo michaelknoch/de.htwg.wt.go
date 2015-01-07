@@ -101,6 +101,7 @@ angular.module('goApp')
             }
 
             GameService.pass();
+            $scope.getStatus();
         };
 
         function fetchInformation() {
@@ -116,6 +117,10 @@ angular.module('goApp')
                 return false;
             }
         };
+
+        $scope.closeGame = function() {
+            GameService.closeGame();
+        }
 
         //bootstrap gamefield
         fetchInformation();

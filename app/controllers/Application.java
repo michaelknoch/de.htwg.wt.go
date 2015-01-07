@@ -123,6 +123,12 @@ public class Application extends Controller {
         }
     }
 
+    public static Result closeGame() {
+        int gameId = Integer.parseInt(session("gameId"));
+        gameInstances.remove(gameId);
+        return ok();
+    }
+
     public static Result getStatus() {
         int gameId = Integer.parseInt(session("gameId"));
         GameInstance gameInstance = gameInstances.get(gameId);
