@@ -8,10 +8,9 @@
  * Controller of the invoicePocApp
  */
 angular.module('goApp')
-    .controller('GameCtrl', function($scope, $rootScope, $state, GameService, $interval) {
+    .controller('GameCtrl', function($scope, $rootScope, $state, GameService, $interval, $mdDialog) {
         $scope.errorState = false;
         $scope.gameField = [];
-
 
         var socketUrl = 'ws://' + location.host + '/connectWebSocket';
         var connection = new WebSocket(socketUrl);
@@ -28,6 +27,25 @@ angular.module('goApp')
             };
         }
 
+        function alive() {
+            GameService.getStatus().error(function(err) {
+                console.log(err);
+                //$state.go('welcome');
+
+                $scope.showConfirm = function(ev) {
+                    var confirm = $mdDialog.confirm()
+                      .title('Game')
+                      .content('The game has been closed! White Score: ' + $scope.score.white + ' Black Score: ' + $scope.score.black)
+                      .ok('Got it!')
+                      .targetEvent(ev);
+                    $mdDialog.show(confirm).then(function() {
+                      $state.go('welcome');
+                    });
+                  };
+                $scope.showConfirm();
+
+            });
+        }
 
         $scope.setStone = function(x, y) {
             if (!$scope.myTurn()) {
@@ -105,9 +123,9 @@ angular.module('goApp')
         };
 
         function fetchInformation() {
+            $scope.getStatus();
             $scope.getScore();
             $scope.getGameField();
-            $scope.getStatus();
         }
 
         $scope.myTurn = function() {
@@ -120,8 +138,19 @@ angular.module('goApp')
 
         $scope.closeGame = function() {
             GameService.closeGame();
+            alive();
         }
 
         //bootstrap gamefield
         fetchInformation();
     });
+
+
+    function DialogController($scope, $mdDialog) {
+      $scope.hide = function() {
+        $mdDialog.hide();
+      };
+      $scope.cancel = function() {
+        $mdDialog.cancel();
+      };
+    }

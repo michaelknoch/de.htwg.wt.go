@@ -171,6 +171,9 @@ md-dialog md-content {
     padding: 5px 15px;
 }
 
+md-dialog.md-default-theme {
+    padding: 15px;
+}
 
 @media (max-width: 767px) {
     .sidebar-right {
