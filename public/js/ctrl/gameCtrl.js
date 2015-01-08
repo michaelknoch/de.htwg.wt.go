@@ -13,22 +13,6 @@ angular.module('goApp')
         $scope.gameField = [];
         var _myColor = '';
 
-        var onMessage = function(msg) {
-            var data = JSON.parse(msg.data);
-            if (!data.operate) {
-                notAlive();
-            }
-            $scope.gameField = data.gamefield;
-            $scope.score = data.score;
-            $scope.whosNext = data.next;
-            $scope.operate = data.operate;
-            $scope.$apply();
-
-        };
-
-        // Set up websocket connection
-        WebsocketService.connect(onMessage);
-
         function notAlive() {
             $scope.showConfirm = function(ev) {
                 var confirm = $mdDialog.confirm()
@@ -138,6 +122,22 @@ angular.module('goApp')
         $scope.closeGame = function() {
             GameService.closeGame();
         };
+
+        function onMessage(msg) {
+            var data = JSON.parse(msg.data);
+            if (!data.operate) {
+                notAlive();
+            }
+            $scope.gameField = data.gamefield;
+            $scope.score = data.score;
+            $scope.whosNext = data.next;
+            $scope.operate = data.operate;
+            $scope.$apply();
+
+        }
+
+        // Set up websocket connection
+        WebsocketService.connect(onMessage);
 
         //bootstrap gamefield
         fetchInformation();
