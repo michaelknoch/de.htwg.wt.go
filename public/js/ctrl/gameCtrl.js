@@ -33,18 +33,21 @@ angular.module('goApp')
                 $scope.status = "It's not your turn, wait for opponent";
                 return;
             }
-
-            GameService.setStone({
+            var position = {
                 x: x,
                 y: y
-            }).error(function(resp) {
-                $scope.errorState = true;
-                $scope.status = resp.message;
-            }).then(function(resp) {
-                $scope.errorState = false;
-                //$scope.setStoneState = resp;
-                $scope.status = resp.data.message;
-            });
+            };
+
+            GameService.setStone(position)
+                .error(function(resp) {
+                    $scope.errorState = true;
+                    $scope.status = resp.message;
+                })
+                .then(function(resp) {
+                    $scope.errorState = false;
+                    //$scope.setStoneState = resp;
+                    $scope.status = resp.data.message;
+                });
         };
 
         $scope.getStatus = function() {
@@ -100,7 +103,7 @@ angular.module('goApp')
             GameService.getNext().then(function(resp) {
                 $scope.whosNext = resp.data;
             });
-        }
+        };
 
         function fetchInformation() {
             $scope.getStatus();
@@ -148,13 +151,3 @@ angular.module('goApp')
         //bootstrap gamefield
         fetchInformation();
     });
-
-
-function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
-        $mdDialog.hide();
-    };
-    $scope.cancel = function() {
-        $mdDialog.cancel();
-    };
-}
