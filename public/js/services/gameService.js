@@ -28,6 +28,9 @@ angular.module('goApp')
         closeGame: function() {
             return $http.post('/closeGame');
         },
+        getNext: function() {
+            return $http.get('/getNext');
+        },
         refresh: function() {
             return $http.get('/refresh');
         }
