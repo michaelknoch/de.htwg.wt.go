@@ -209,6 +209,10 @@ md-tabs.md-default-theme md-tab {
     padding: 15px;
 }
 
+.cell.cell-2, .cell.cell-1 {
+    opacity: 0.1;
+}
+
 @media (max-width: 767px) {
     .sidebar-right {
         margin-left: -15px;

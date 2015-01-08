@@ -133,6 +133,7 @@ angular.module('goApp')
             $scope.score = data.score;
             $scope.whosNext = data.next;
             $scope.operate = data.operate;
+            $scope.status = data.status
             $scope.$apply();
 
         }
