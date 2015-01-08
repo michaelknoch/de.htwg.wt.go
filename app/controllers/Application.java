@@ -170,6 +170,12 @@ public class Application extends Controller {
         return ok(gameInstance.getController().getOperate() + "");
     }
 
+    public static Result refresh() {
+        int gameId = Integer.parseInt(session("gameId"));
+        gameInstances.get(gameId).getController().notifyObservers();
+        return ok();
+    }
+
     public static WebSocket<String> connectWebSocket() {
         return new WebSocket<String>() {
             int gameId = Integer.parseInt(session("gameId"));

@@ -106,6 +106,7 @@ angular.module('goApp')
             $scope.getStatus();
             $scope.getScore();
             $scope.getGameField();
+            $scope.refresh();
         }
 
         $scope.myTurn = function() {
@@ -135,6 +136,10 @@ angular.module('goApp')
             $scope.$apply();
 
         }
+
+        $scope.refresh = function() {
+            GameService.refresh();
+        };
 
         // Set up websocket connection
         WebsocketService.connect(onMessage);

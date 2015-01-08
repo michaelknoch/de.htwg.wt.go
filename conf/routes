@@ -12,6 +12,7 @@ GET     /test                               controllers.Application.test()
 GET     /createNewGame/:player1/:gameSize   controllers.Application.createNewGame(player1: String, gameSize: Integer)
 GET     /joinGame/:gameId/:player2          controllers.Application.joinGame(gameId: Integer, player2: String)
 GET     /getAllPlayers                      controllers.Application.getAllPlayers()
+GET     /refresh                            controllers.Application.refresh()
 
 GET     /connectWebSocket                   controllers.Application.connectWebSocket()
 
