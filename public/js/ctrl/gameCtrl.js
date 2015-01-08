@@ -16,7 +16,6 @@ angular.module('goApp')
         var connection = new WebSocket(socketUrl);
         initWebsockets();
 
-
         function initWebsockets() {
             connection.onmessage = function(msg) {
                 var data = JSON.parse(msg.data);
@@ -126,6 +125,7 @@ angular.module('goApp')
             $scope.getStatus();
             $scope.getScore();
             $scope.getGameField();
+            $scope.refresh();
         }
 
         $scope.myTurn = function() {
@@ -138,6 +138,10 @@ angular.module('goApp')
 
         $scope.closeGame = function() {
             GameService.closeGame();
+        }
+
+        $scope.refresh = function() {
+            GameService.refresh();
         }
 
         //bootstrap gamefield
