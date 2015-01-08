@@ -15,11 +15,9 @@ angular.module('goApp')
 
         var onMessage = function(msg) {
             var data = JSON.parse(msg.data);
-
             if (!data.operate) {
                 notAlive();
             }
-
             $scope.gameField = data.gamefield;
             $scope.score = data.score;
             $scope.whosNext = data.next;
@@ -28,9 +26,8 @@ angular.module('goApp')
 
         };
 
+        // Set up websocket connection
         WebsocketService.connect(onMessage);
-
-
 
         function notAlive() {
             $scope.showConfirm = function(ev) {
@@ -53,43 +50,41 @@ angular.module('goApp')
                 return;
             }
 
-            var promise = GameService.setStone({
+            GameService.setStone({
                 x: x,
                 y: y
-            });
-            promise.error(function(resp) {
+            }).error(function(resp) {
                 $scope.errorState = true;
                 $scope.status = resp.message;
             }).then(function(resp) {
                 $scope.errorState = false;
                 //$scope.setStoneState = resp;
                 $scope.status = resp.data.message;
-
             });
         };
 
         $scope.getStatus = function() {
-            GameService.getStatus().error(function(err) {
-                console.log(err);
-            }).then(function(resp) {
-                $scope.status = resp.data;
-                var regex = /black is next /;
-                var regex2 = /black is still next/;
-                if ($scope.status.match(regex) || $scope.status.match(regex2)) {
-                    $scope.whosNext = 'black';
-                } else {
-                    $scope.whosNext = 'white';
-                }
-            });
+            GameService.getStatus()
+                .error(function(err) {
+                    console.log(err);
+                }).then(function(resp) {
+                    $scope.status = resp.data;
+                    var regex = /black is next /;
+                    var regex2 = /black is still next/;
+                    if ($scope.status.match(regex) || $scope.status.match(regex2)) {
+                        $scope.whosNext = 'black';
+                    } else {
+                        $scope.whosNext = 'white';
+                    }
+                });
         };
 
         $scope.getGameField = function() {
-            var promise = GameService.getGameField();
-            promise.then(function(resp) {
-                $scope.gameField = resp.data.gamefield;
-                $scope.gameFieldIndex = $scope.gameField.length - 1;
-
-            });
+            GameService.getGameField()
+                .then(function(resp) {
+                    $scope.gameField = resp.data.gamefield;
+                    $scope.gameFieldIndex = $scope.gameField.length - 1;
+                });
         };
 
         $scope.createNewField = function(size) {
@@ -105,9 +100,11 @@ angular.module('goApp')
         };
 
         $scope.getScore = function() {
-            GameService.getScore().error().then(function(resp) {
-                $scope.score = resp.data;
-            });
+            GameService.getScore()
+                .error()
+                .then(function(resp) {
+                    $scope.score = resp.data;
+                });
         };
 
         $scope.pass = function() {
@@ -140,7 +137,7 @@ angular.module('goApp')
 
         $scope.closeGame = function() {
             GameService.closeGame();
-        }
+        };
 
         //bootstrap gamefield
         fetchInformation();
