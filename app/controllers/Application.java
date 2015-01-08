@@ -54,6 +54,13 @@ public class Application extends Controller {
                 m1.put("gameId", String.valueOf(x));
                 m1.put("player1", Json.toJson(gameInstances.get(x).getPlayer1()));
                 m1.put("player2", Json.toJson(gameInstances.get(x).getPlayer2()));
+
+                if (gameInstances.get(x).getPlayer2() == "open") {
+                    m1.put("availableToJoin", true);
+                } else {
+                    m1.put("availableToJoin", false);
+                }
+
                 l1.add(m1);
             }
 

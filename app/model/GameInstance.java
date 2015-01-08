@@ -14,7 +14,7 @@ public class GameInstance {
 
     public GameInstance(String name, IGoController controller) {
         this.player1 = name;
-        this.player2 = "anonym";
+        this.player2 = "open";
         this.controller = controller;
         this.gameId = controller.hashCode();
     }
