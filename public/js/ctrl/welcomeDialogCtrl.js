@@ -14,22 +14,24 @@ angular.module('goApp')
         $scope.newGameFieldSize = 9;
 
         $scope.joinGame = function(gameId, newPlayerName) {
-            WelcomeService.joinGame(gameId, newPlayerName).then(function() {
-                localStorage.setItem('myColor', 'black');
-                $mdDialog.hide().then(function() {
-                    $state.go('game', {
-                        gameId: gameId
-                    });
+            WelcomeService.joinGame(gameId, newPlayerName)
+                .then(function() {
+                    localStorage.setItem('myColor', 'black');
+                    $mdDialog.hide()
+                        .then(function() {
+                            $state.go('game', {
+                                gameId: gameId
+                            });
+                        });
                 });
-
-            });
         };
 
         function fetchGames() {
             if ($state.is('welcome')) {
-                WelcomeService.getAllPlayers().then(function(res) {
-                    $scope.allGames = res.data;
-                });
+                WelcomeService.getAllPlayers()
+                    .then(function(res) {
+                        $scope.allGames = res.data;
+                    });
             }
         }
 
@@ -44,9 +46,10 @@ angular.module('goApp')
         };
 
         $scope.closeDialog = function() {
-            $mdDialog.hide().then(function() {
-                $state.go('game');
-            });
+            $mdDialog.hide()
+                .then(function() {
+                    $state.go('game');
+                });
         };
         fetchGames();
         $interval(fetchGames, 1500);
