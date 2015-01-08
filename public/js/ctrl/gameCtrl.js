@@ -11,7 +11,7 @@ angular.module('goApp')
     .controller('GameCtrl', function($scope, $rootScope, $state, GameService, $interval, $mdDialog) {
         $scope.errorState = false;
         $scope.gameField = [];
-
+        var _myColor = '';
         var socketUrl = 'ws://' + location.host + '/connectWebSocket';
         var connection = new WebSocket(socketUrl);
         initWebsockets();
@@ -36,14 +36,14 @@ angular.module('goApp')
         function notAlive() {
             $scope.showConfirm = function(ev) {
                 var confirm = $mdDialog.confirm()
-                  .title('Game')
-                  .content('The game has been closed! White Score: ' + $scope.score.white + ' Black Score: ' + $scope.score.black)
-                  .ok('Got it!')
-                  .targetEvent(ev);
+                    .title('Game')
+                    .content('The game has been closed! White Score: ' + $scope.score.white + ' Black Score: ' + $scope.score.black)
+                    .ok('Got it!')
+                    .targetEvent(ev);
                 $mdDialog.show(confirm).then(function() {
-                  $state.go('welcome');
+                    $state.go('welcome');
                 });
-              };
+            };
             $scope.showConfirm();
         }
 
@@ -129,7 +129,10 @@ angular.module('goApp')
         }
 
         $scope.myTurn = function() {
-            if (localStorage.getItem('myColor') === $scope.whosNext) {
+            if (!_myColor) {
+                _myColor = localStorage.getItem('myColor');
+            }
+            if (_myColor === $scope.whosNext) {
                 return true;
             } else {
                 return false;
@@ -145,11 +148,11 @@ angular.module('goApp')
     });
 
 
-    function DialogController($scope, $mdDialog) {
-      $scope.hide = function() {
+function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
         $mdDialog.hide();
-      };
-      $scope.cancel = function() {
+    };
+    $scope.cancel = function() {
         $mdDialog.cancel();
-      };
-    }
+    };
+}
