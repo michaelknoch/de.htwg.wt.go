@@ -53,13 +53,7 @@ angular.module('goApp')
                     console.log(err);
                 }).then(function(resp) {
                     $scope.status = resp.data;
-                    var regex = /black is next /;
-                    var regex2 = /black is still next/;
-                    if ($scope.status.match(regex) || $scope.status.match(regex2)) {
-                        $scope.whosNext = 'black';
-                    } else {
-                        $scope.whosNext = 'white';
-                    }
+
                 });
         };
 
@@ -102,11 +96,17 @@ angular.module('goApp')
             $scope.getStatus();
         };
 
+        $scope.getNext = function() {
+            GameService.getNext().then(function(resp) {
+                $scope.whosNext = resp.data;
+            });
+        }
+
         function fetchInformation() {
             $scope.getStatus();
             $scope.getScore();
             $scope.getGameField();
-            $scope.refresh();
+            $scope.getNext();
         }
 
         $scope.myTurn = function() {
