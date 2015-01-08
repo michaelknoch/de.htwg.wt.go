@@ -103,7 +103,7 @@ angular.module('goApp')
             GameService.getNext().then(function(resp) {
                 $scope.whosNext = resp.data;
             });
-        }
+        };
 
         function fetchInformation() {
             $scope.getStatus();
