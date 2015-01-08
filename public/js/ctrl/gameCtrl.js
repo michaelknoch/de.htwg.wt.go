@@ -8,30 +8,29 @@
  * Controller of the invoicePocApp
  */
 angular.module('goApp')
-    .controller('GameCtrl', function($scope, $rootScope, $state, GameService, $interval, $mdDialog) {
+    .controller('GameCtrl', function($scope, $rootScope, $state, GameService, WebsocketService, $interval, $mdDialog) {
         $scope.errorState = false;
         $scope.gameField = [];
         var _myColor = '';
-        var socketUrl = 'ws://' + location.host + '/connectWebSocket';
-        var connection = new WebSocket(socketUrl);
-        initWebsockets();
+
+        var onMessage = function(msg) {
+            var data = JSON.parse(msg.data);
+
+            if (!data.operate) {
+                notAlive();
+            }
+
+            $scope.gameField = data.gamefield;
+            $scope.score = data.score;
+            $scope.whosNext = data.next;
+            $scope.operate = data.operate;
+            $scope.$apply();
+
+        };
+
+        WebsocketService.connect(onMessage);
 
 
-        function initWebsockets() {
-            connection.onmessage = function(msg) {
-                var data = JSON.parse(msg.data);
-
-                if (!data.operate) {
-                    notAlive();
-                }
-
-                $scope.gameField = data.gamefield;
-                $scope.score = data.score;
-                $scope.whosNext = data.next;
-                $scope.operate = data.operate;
-                $scope.$apply();
-            };
-        }
 
         function notAlive() {
             $scope.showConfirm = function(ev) {
