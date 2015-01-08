@@ -147,13 +147,3 @@ angular.module('goApp')
         //bootstrap gamefield
         fetchInformation();
     });
-
-
-function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
-        $mdDialog.hide();
-    };
-    $scope.cancel = function() {
-        $mdDialog.cancel();
-    };
-}
