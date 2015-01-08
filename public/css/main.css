@@ -205,6 +205,10 @@ md-tabs.md-default-theme md-tab {
     color: white !important;
 }
 
+.your-name {
+    padding: 15px;
+}
+
 @media (max-width: 767px) {
     .sidebar-right {
         margin-left: -15px;
