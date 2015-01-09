@@ -9,7 +9,8 @@
  * Main module of the application.
  */
 angular.module('goApp', ['ui.router', 'ngMaterial'])
-    .config(function($urlRouterProvider, $stateProvider) {
+    .config(function($urlRouterProvider, $stateProvider, $compileProvider) {
+        $compileProvider.debugInfoEnabled(false);
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('welcome', {
