@@ -141,16 +141,29 @@ body {
     float: left;
 }
 .welcome-tab {
-    min-width: 400px;
+    width: 400px;
 }
 .tabs-container {
     margin: 0 0 20px;
 }
 .welcome-static-height {
     overflow-y: scroll;
+    height: 228px;
+    max-width: 400px;
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -ms-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;
 }
+
 .welcome-static-height::-webkit-scrollbar {
     display: none;
+}
+.welcome-static-height h3 {
+    margin-bottom: 3px;
+    float: left;
+    margin-top: 10px;
 }
 
 .oneGame {
@@ -164,7 +177,6 @@ body {
     background: rgba(0,0,0,.1);
 }
 md-divider {
-    float:left;
     clear: both;
     width: 100%;
 }
@@ -186,6 +198,13 @@ md-tabs.md-default-theme md-tab:focus {
 }
 
 .input-line {
+    padding-bottom: 15px;
+}
+.input-line .label {
+    font-size: 15px;
+    text-align: left;
+}
+md-divider.md-default-theme {
     padding-bottom: 15px;
 }
 
@@ -217,7 +236,7 @@ md-tabs.md-default-theme md-tab {
 }
 
 .your-name {
-    padding: 15px;
+    padding: 0 15px;
 }
 
 .cell.cell-2, .cell.cell-1 {
