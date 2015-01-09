@@ -9,9 +9,10 @@
  */
 angular.module('goApp')
     .controller('WelcomeDialogCtrl', function($scope, $state, $mdDialog, WelcomeService, $interval) {
-        $scope.allGames = {};
+        $scope.allGames = [];
         $scope.newPlayerName = '';
         $scope.newGameFieldSize = 9;
+        $scope.selectedIndex = 0;
 
         $scope.joinGame = function(gameId, newPlayerName) {
             WelcomeService.joinGame(gameId, newPlayerName)
@@ -30,6 +31,13 @@ angular.module('goApp')
             if ($state.is('welcome')) {
                 WelcomeService.getAllPlayers()
                     .then(function(res) {
+                        // redirect tab if no games exist
+                        if (res.data.length === 0) {
+                            $scope.selectedIndex = 1;
+                            return;
+                        }
+
+
                         $scope.allGames = res.data;
                     });
             }
