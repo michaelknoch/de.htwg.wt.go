@@ -43,7 +43,7 @@ public class Application extends Controller {
         return ok(JSONValue.toJSONString(gameInstance));
     }
 
-    public static Result getAllPlayers() {
+    public static Result getAllGames() {
 
         List l1 = new LinkedList();
 

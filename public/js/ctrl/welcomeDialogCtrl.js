@@ -29,7 +29,7 @@ angular.module('goApp')
 
         function fetchGames() {
             if ($state.is('welcome')) {
-                WelcomeService.getAllPlayers()
+                WelcomeService.getAllGames()
                     .then(function(res) {
                         // redirect tab if no games exist
                         if (res.data.length === 0) {
@@ -60,6 +60,6 @@ angular.module('goApp')
                 });
         };
         fetchGames();
-        $interval(fetchGames, 1500);
+        //$interval(fetchGames, 1500);
 
     });

@@ -4,8 +4,8 @@ angular.module('goApp')
 
 .service('WelcomeService', function($http) {
     return {
-        getAllPlayers: function() {
-            return $http.get('/getAllPlayers');
+        getAllGames: function() {
+            return $http.get('/getAllGames');
         },
         joinGame: function(gameId, name) {
             return $http.get('/joinGame/' + gameId + '/' + name);
