@@ -17,7 +17,7 @@
            <p> <div class="your-name">Your name: <input type="text" ng-model="newPlayerName"></div>
              <md-divider></md-divider></p>
             <div class="welcome-static-height">
-            <h3>Games available to join:</h3>
+            <h3 ng-if="allGames.length != 0">Games available to join:</h3>
             <div ng-repeat="game in allGames" ng-click="joinGame(game.gameId, newPlayerName)">
                 <div class="oneGame" ng-if="game.availableToJoin">
                     <div>Player1: {{game.player1}}</div>
@@ -27,7 +27,7 @@
                 <md-divider ng-if="!$last"></md-divider>
 
             </div>
-            <h3>Running Games:</h3>
+            <h3 ng-if="allGames.length != 0">Running Games:</h3>
             <div ng-repeat="game in allGames">
                 <div class="oneGame" ng-if="!game.availableToJoin">
                     <div>Player1: {{game.player1}}</div>
