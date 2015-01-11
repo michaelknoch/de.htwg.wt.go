@@ -14,6 +14,8 @@ GET     /joinGame/:gameId/:player2          controllers.Application.joinGame(gam
 GET     /getAllGames                        controllers.Application.getAllGames()
 GET     /refresh                            controllers.Application.refresh()
 
+GET     /auth                               controllers.Application.auth()
+
 GET     /connectWebSocket                   controllers.Application.connectWebSocket()
 
 POST    /setStone                           controllers.Application.setStone()
