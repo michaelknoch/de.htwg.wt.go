@@ -14,6 +14,23 @@ angular.module('goApp')
         $scope.newGameFieldSize = 9;
         $scope.selectedIndex = 0;
 
+        $scope.showAuthDialog = function showWelcomeDialog($event) {
+            $mdDialog.hide().then(function() {
+                $mdDialog.show({
+                    templateUrl: 'assets/partials/authDialog.html',
+                    onComplete: afterShowAnimation,
+                    controller: 'AuthCtrl',
+                    clickOutsideToClose: false
+                });
+            });
+
+            // When the 'enter' animation finishes...
+            function afterShowAnimation(scope, element, options) {
+                // post-show code here: DOM element focus, etc.
+            }
+        };
+
+
         $scope.joinGame = function(gameId, newPlayerName) {
             WelcomeService.joinGame(gameId, newPlayerName)
                 .then(function() {
