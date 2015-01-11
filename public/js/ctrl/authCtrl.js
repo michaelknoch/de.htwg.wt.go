@@ -14,20 +14,19 @@ angular.module('goApp')
             AuthService.auth()
                 .then(function(response) {
                     gapi.signin.render(
-                        'signinButton', {
+                        'gButton', {
+                            'scope': 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email',
                             'callback': $scope.authCallback,
-                            'clientid': response.client_id,
-                            'redirecturi': 'postmessage',
-                            'accesstype': "offline",
-                            /*'requestvisibleactions': "http://schemas.google.com/AddActivity",*/
-                            'scope': 'https://www.googleapis.com/auth/plus.login',
+                            'clientid': response.data.client_id,
+                            'requestvisibleactions': "http://schemas.google.com/AddActivity",
                             'cookiepolicy': "single_host_origin"
                         });
 
                 });
         };
+        $scope.renderSignIn();
 
         $scope.authCallback = function(authResult) {
-            debugger;
+            console.log(authResult);
         };
     });
