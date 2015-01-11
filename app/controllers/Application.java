@@ -197,7 +197,6 @@ public class Application extends Controller {
     public static Result auth() {
         final String CLIENT_ID = "949119415800-veiff8ej76e2jectuf5hr5gt6ono43ug.apps.googleusercontent.com";
         final String APPLICATION_NAME = "htwg-go";
-        List l1 = new LinkedList();
 
         // Erzeugen Sie ein Status-Token zur Verhinderung von Anfragenfälschung.
         // Speichern Sie es in der Sitzung, damit es später validiert werden kann.
@@ -210,8 +209,6 @@ public class Application extends Controller {
         m1.put("state", state);
         m1.put("application_name", APPLICATION_NAME);
 
-        l1.add(m1);
-
-        return ok(JSONValue.toJSONString(l1));
+        return ok(JSONValue.toJSONString(m1));
     }
 }
