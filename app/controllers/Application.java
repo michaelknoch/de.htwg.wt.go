@@ -13,11 +13,14 @@ import play.mvc.WebSocket;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.*;
 
 
 public class Application extends Controller {
     static Map<Integer, GameInstance> gameInstances = new HashMap<Integer, GameInstance>();
+
 
     public static Result index() {
         session("connected", "");
@@ -191,4 +194,24 @@ public class Application extends Controller {
 
     }
 
+    public static Result auth() {
+        final String CLIENT_ID = "949119415800-veiff8ej76e2jectuf5hr5gt6ono43ug.apps.googleusercontent.com";
+        final String APPLICATION_NAME = "htwg-go";
+        List l1 = new LinkedList();
+
+        // Erzeugen Sie ein Status-Token zur Verhinderung von Anfragenfälschung.
+        // Speichern Sie es in der Sitzung, damit es später validiert werden kann.
+        String state = new BigInteger(130, new SecureRandom()).toString(32);
+        session("state", state);
+
+        Map m1 = new LinkedHashMap();
+
+        m1.put("client_id", CLIENT_ID);
+        m1.put("state", state);
+        m1.put("application_name", APPLICATION_NAME);
+
+        l1.add(m1);
+
+        return ok(JSONValue.toJSONString(l1));
+    }
 }
