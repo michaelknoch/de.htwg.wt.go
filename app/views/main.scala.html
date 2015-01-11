@@ -18,6 +18,16 @@
 
     <script type='text/javascript' src='@routes.Assets.at("bower_components/hammerjs/hammer.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("bower_components/angular-material/angular-material.min.js")'></script>
+    <script type="text/javascript">
+    (function () {
+      var po = document.createElement('script');
+      po.type = 'text/javascript';
+      po.async = true;
+      po.src = 'https://plus.google.com/js/client:plusone.js?onload=start';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(po, s);
+    })();
+  </script>
 </head>
 <body ng-app="goApp">
         <div class="back"></div>
