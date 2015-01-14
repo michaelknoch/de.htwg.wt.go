@@ -53,7 +53,7 @@ angular.module('goApp')
         $scope.getStatus = function() {
             GameService.getStatus()
                 .error(function(err) {
-                    console.info(err);
+                    // swap to lobby
                     $state.go('welcome');
                 }).then(function(resp) {
                     $scope.status = resp.data;
