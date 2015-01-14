@@ -18,19 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar-right col-sm-3 col-xs-12">
-                <div class="scoreboard">
-                    <h2>Score:</h2>
-
-                    <div class="white" ng-class="{act: whosNext == 'white'}">{{score.white}}</div>
-                    <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
-                </div>
-                <div class="buttons">
-                    <div class="pass-button btn btn-default" ng-click="pass()">pass</div>
-                    <div class="close-button btn btn-default" ng-click="closeGame()">close Game</div>
-                </div>
-
-            </div>
+            <scoreboard></scoreboard>
         </div>
         <div class="statusrow row">
             <div class="status-line col-sm-9 col-xs-12">
