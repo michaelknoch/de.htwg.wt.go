@@ -20,3 +20,4 @@ dist
 *.log
 
 #public/bower_components/
+node_modules/
