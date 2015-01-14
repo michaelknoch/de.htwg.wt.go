@@ -35,6 +35,7 @@ public class staticHelpers {
         result.put("score", Json.toJson(score));
         result.put("operate", Json.toJson(ctrl.getOperate()));
         result.put("status", Json.toJson(ctrl.getStatus()));
+        result.put("passed", Json.toJson(ctrl.getPassed()));
 
         return result;
     }
