@@ -306,6 +306,19 @@ md-tabs.md-default-theme md-tab {
     opacity: 0;
 }
 
+.buttons .btn {
+    background: #DFF0F0;
+    margin-top: 3px;
+    height: 30px;
+    line-height: 16px;
+    text-align: left;
+}
+
+.buttons .fa {
+    margin-right: 10px;
+}
+
+
 
 
 @media (max-width: 767px) {
