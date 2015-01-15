@@ -137,9 +137,41 @@ angular.module('goApp')
             $scope.score = data.score;
             $scope.whosNext = data.next;
             $scope.operate = data.operate;
-            $scope.status = data.status
+            $scope.status = data.status;
+            $scope.passed = data.passed;
             $scope.$apply();
 
+            passedModal();
+        }
+
+        function passedModal() {
+            if ($scope.passed && $scope.myTurn() && $scope.operate) {
+                console.info('modal');
+                $scope.showAdvanced = function(ev) {
+                    $mdDialog.show({
+                        controller: DialogController,
+                        templateUrl: 'assets/partials/passmodal.html',
+                        targetEvent: ev,
+                    }).then(function(answer) {
+                        if(answer === 'pass') {
+                            $scope.pass();
+                        }
+                    });
+              };
+            $scope.showAdvanced();
+            }
+        }
+
+        function DialogController($scope, $mdDialog) {
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+                $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+                $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
         }
 
         $scope.refresh = function() {
