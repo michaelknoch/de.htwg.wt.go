@@ -1,0 +1,20 @@
+<md-dialog>
+    <md-content>
+        <p>
+            Your opponent passed, would you like to finish the game?
+        </p>
+
+    </md-content>
+    <div class="md-actions" layout="row">
+        <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" hide show-md>
+            More on Wikipedia
+        </md-button>
+        <span flex></span>
+        <md-button ng-click="answer('pass')">
+            Pass
+        </md-button>
+        <md-button ng-click="answer('goon')" class="md-primary">
+            Go on
+        </md-button>
+    </div>
+</md-dialog>
