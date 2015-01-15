@@ -153,12 +153,12 @@ angular.module('goApp')
                         templateUrl: 'assets/partials/passmodal.html',
                         targetEvent: ev,
                     }).then(function(answer) {
-                        if(answer === 'pass') {
+                        if (answer === 'pass') {
                             $scope.pass();
                         }
                     });
-              };
-            $scope.showAdvanced();
+                };
+                $scope.showAdvanced();
             }
         }
 
@@ -166,10 +166,10 @@ angular.module('goApp')
             $scope.hide = function() {
                 $mdDialog.hide();
             };
-                $scope.cancel = function() {
+            $scope.cancel = function() {
                 $mdDialog.cancel();
             };
-                $scope.answer = function(answer) {
+            $scope.answer = function(answer) {
                 $mdDialog.hide(answer);
             };
         }
