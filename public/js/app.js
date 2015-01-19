@@ -11,10 +11,10 @@
 angular.module('goApp', ['ui.router', 'ngMaterial'])
     .config(function($urlRouterProvider, $stateProvider, $compileProvider) {
         $compileProvider.debugInfoEnabled(false);
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/auth');
         $stateProvider
             .state('auth', {
-                url: '/',
+                url: '/auth',
                 templateUrl: 'assets/partials/main.html',
                 controller: 'AuthCtrl'
             })
