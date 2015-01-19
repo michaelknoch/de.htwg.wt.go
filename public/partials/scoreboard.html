@@ -2,8 +2,13 @@
     <div class="scoreboard">
         <h2>Score:</h2>
 
-        <div class="white" ng-class="{act: whosNext == 'white'}">{{score.white}}</div>
-        <div class="black" ng-class="{act: whosNext == 'black'}">{{score.black}}</div>
+        <div class="white" ng-class="{act: whosNext == 'white'}"><span class="score-number">{{score.white}}</span></div>
+        <div class="black" ng-class="{act: whosNext == 'black'}"><span class="score-number">{{score.black}}</span></div>
+    </div>
+
+    <div class="your-turn col-xs-12">
+        <div ng-if="myTurn()"><i class="fa fa-check"></i><span>play</span></div>
+        <div ng-if="!myTurn()"><i class="fa fa-ban"></i></i><span>wait</span></div>
     </div>
     <div class="buttons">
 

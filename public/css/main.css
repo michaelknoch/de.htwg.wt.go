@@ -25,12 +25,12 @@
 }
 
 .scoreboard .white, .scoreboard .black {
-    width: 67px;
     height: 43px;
     padding-left: 75px;
     margin-bottom: 10px;
     float:left;
     font-size: 20px;
+    width: 100%;
 }
 
 .scoreboard .white {
@@ -43,6 +43,9 @@
 .status-line {
     float: left;
     padding: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
 }
 
 * {
@@ -113,10 +116,12 @@ body {
     background: rgba(255, 255,255, 0.3);
     padding-top: 15px;
     padding-bottom: 15px;
+
+    border-top-left-radius: 5px;
+    overflow: hidden;
 }
 
 .scoreboard {
-    background: rgba(255, 255,255, 0.5);
     float: left;
     height: 100%;
     padding-left: 15px;
@@ -124,12 +129,13 @@ body {
 }
 
 .status-line {
-    margin-top: 3px;
     background: rgba(255, 255,255, 0.5);
 }
 
 .buttons {
     width: 100%;
+    float: left;
+    padding: 20px;
 }
 
 .buttons .btn {
@@ -308,16 +314,64 @@ md-tabs.md-default-theme md-tab {
 
 .buttons .btn {
     background: #DFF0F0;
-    margin-top: 3px;
-    height: 30px;
     line-height: 16px;
-    text-align: left;
+    text-align: center;
 }
+
 
 .fa {
-    margin-right: 10px;
+    font-size: 30px;
+    transition-duration: 0.3s;
+    transition-property: font-size;
 }
 
+.sidebar-right .btn:hover .fa {
+    font-size: 50px;
+}
+
+.sidebar-right.col-sm-3.col-xs-12 {
+    padding-left: 0px;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
+    background: rgba(255, 255,255, 0.3);
+    padding-right: 0px;
+}
+
+.buttons .btn span {
+    float: left;
+    width: 100%;
+}
+
+.sidebar-right .buttons .btn {
+    border: none;
+    background: none;
+    color: #dff0d8;
+    width: 100%;
+    float: left;
+    padding: 10px 0;
+    outline: none;
+}
+
+.your-turn .fa {
+    margin-right: 13px;
+    margin-left: 4px;
+    font-size: 35px;
+}
+
+.your-turn span {
+    font-size: 29px;
+    text-transform: uppercase;
+}
+
+.fa-ban {
+    color: rgb(178, 0, 0);
+}
+
+.fa-check {
+    color: green;
+}
 
 
 
@@ -327,8 +381,20 @@ md-tabs.md-default-theme md-tab {
         box-sizing: content-box;
     }
 
+    .sidebar-right.col-sm-3.col-xs-12 {
+        padding-left: 15px;
+    }
+
     .scoreboard .white, .scoreboard .black {
         padding-left: 40px;
         padding-right: 60px;
+        width: 50px;
     }
+
+    .sidebar-right.col-sm-3.col-xs-12 .btn {
+        width: 50%;
+        text-align: left;
+    }
+
+
 }
