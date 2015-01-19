@@ -12,6 +12,9 @@ angular.module('goApp')
         },
         createNewGame: function(name, size) {
             return $http.get('/createNewGame/' + name + '/' + size);
+        },
+        joined: function() {
+            return $http.get('/joined');
         }
     };
 });
