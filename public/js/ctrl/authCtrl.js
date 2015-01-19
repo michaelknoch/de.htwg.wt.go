@@ -29,6 +29,11 @@ angular.module('goApp')
         $scope.authCallback = function(authResult) {
             if ($rootScope.isSignedIn || authResult['access_token']) {
                 $rootScope.isSignedIn = true;
+                AuthService.getUserInformation(authResult['access_token'])
+                    .then(function(response) {
+                        $rootScope.userId = response.data.user_id;
+                        $rootScope.userMail = response.data.email;
+                    });
 
             } else if (authResult['error']) {
                 $rootScope.isSignedIn = false;
