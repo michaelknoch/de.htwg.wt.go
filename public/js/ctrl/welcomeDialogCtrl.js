@@ -13,6 +13,8 @@ angular.module('goApp')
         $scope.newPlayerName = '';
         $scope.newGameFieldSize = 9;
         $scope.selectedIndex = 0;
+        $scope.userId = $rootScope.userId;
+        $scope.userMail = $rootScope.userMail;
 
         $scope.joinGame = function(gameId, newPlayerName) {
             WelcomeService.joinGame(gameId, newPlayerName)
@@ -36,8 +38,6 @@ angular.module('goApp')
                             $scope.selectedIndex = 1;
                             return;
                         }
-
-
                         $scope.allGames = res.data;
                     });
             }

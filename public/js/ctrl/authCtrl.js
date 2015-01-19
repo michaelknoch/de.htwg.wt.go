@@ -15,7 +15,7 @@ angular.module('goApp')
             $mdDialog.show({
                 templateUrl: 'assets/partials/authDialog.html',
                 onComplete: afterShowAnimation,
-                controller: function($scope, AuthService) {
+                controller: function($scope, $rootScope, AuthService) {
 
                     $scope.renderSignIn = function() {
                         AuthService.auth()
