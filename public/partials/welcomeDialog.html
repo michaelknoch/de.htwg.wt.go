@@ -15,7 +15,7 @@
     <ng-switch on="selectedIndex" class="tabpanel-container">
         <div role="tabpanel" id="tab1-content" class="welcome-tab" aria-labelledby="tab1" ng-switch-when="0">
            <p>To join a new game, simply fill in your name and click on the desired game instance</p>
-           <div class="your-name">Your name: <input type="text" ng-model="newPlayerName || userMail"></div>
+           <div class="your-name">Your name: <input type="text" ng-model="newPlayerName"></div>
 
              <md-divider></md-divider>
             <div class="welcome-static-height">
@@ -45,7 +45,7 @@
             <div class="welcome-static-height new-game" id="new-game-height">
                 <p>To start a new game, simply fill in your name and the desired gamefield-size and hit 'Start new game'</p>
                 <md-divider></md-divider>
-                <div class="input-line"><span class="label">Your name:</span> <input type="text" ng-model="player1 || userMail"></div>
+                <div class="input-line"><span class="label">Your name:</span> <input type="text" ng-model="player1"></div>
                 <div class="input-line"><span class="label">Gamefield size: </span> <input type="number" ng-model="newGameFieldSize"></div>
                 <md-divider></md-divider>
                 <div class="create-button btn btn-default" ng-click="createNewGame(player1, newGameFieldSize)"><i class="fa fa-play"></i>Start new game</div>

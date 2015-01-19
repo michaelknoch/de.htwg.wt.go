@@ -14,7 +14,8 @@ angular.module('goApp')
         $scope.newGameFieldSize = 9;
         $scope.selectedIndex = 0;
         $scope.userId = $rootScope.userId;
-        $scope.userMail = $rootScope.userMail;
+        $scope.newPlayerName = $rootScope.userMail;
+        $scope.player1 = $rootScope.userMail;
 
         $scope.joinGame = function(gameId, newPlayerName) {
             WelcomeService.joinGame(gameId, newPlayerName)
