@@ -10,7 +10,13 @@
 angular.module('goApp')
     .controller('WelcomeCtrl', function($scope, $rootScope, $state, $mdDialog) {
         var alert;
-        showWelcomeDialog();
+
+        if (!$rootScope.isSignedIn) {
+            $state.go('auth');
+        } else {
+            showWelcomeDialog();
+        }
+
 
         $scope.closeDialog = function() {
             $mdDialog.hide(alert, "finished");

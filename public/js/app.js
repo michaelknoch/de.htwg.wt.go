@@ -13,11 +13,17 @@ angular.module('goApp', ['ui.router', 'ngMaterial'])
         $compileProvider.debugInfoEnabled(false);
         $urlRouterProvider.otherwise('/');
         $stateProvider
-            .state('welcome', {
+            .state('auth', {
                 url: '/',
                 templateUrl: 'assets/partials/main.html',
+                controller: 'AuthCtrl'
+            })
+            .state('welcome', {
+                url: '/welcome',
+                templateUrl: 'assets/partials/main.html',
                 controller: 'WelcomeCtrl'
-            }).state('game', {
+            })
+            .state('game', {
                 url: '/game/:gameId',
                 templateUrl: 'assets/partials/game.html',
                 controller: 'GameCtrl'
