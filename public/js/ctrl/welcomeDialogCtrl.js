@@ -47,9 +47,16 @@ angular.module('goApp')
             WelcomeService.createNewGame(name, size).then(function(res) {
                 localStorage.setItem("gameId", res.data.session);
                 localStorage.setItem('myColor', 'white');
-                $state.go('game', {
-                    gameId: res.data.session
-                });
+
+                polling = $interval(function() {
+                    if (WelcomeService.joined()) {
+                        console.info("trigger");
+                        $state.go('game', {
+                            gameId: res.data.session
+                        });
+                    }
+                }, 100);
+
             }).then($scope.closeDialog);
         };
 
