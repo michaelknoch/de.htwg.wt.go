@@ -194,6 +194,15 @@ public class Application extends Controller {
 
     }
 
+    public static Result joined() {
+        GameInstance gameInstance = getGameInstance();
+        if (gameInstance.getPlayer2() != "open") {
+            return ok(true + "");
+        } else {
+            return ok(false + "");
+        }
+    }
+
     public static Result auth() {
         final String CLIENT_ID = "949119415800-veiff8ej76e2jectuf5hr5gt6ono43ug.apps.googleusercontent.com";
         final String APPLICATION_NAME = "htwg-go";

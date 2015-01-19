@@ -13,6 +13,7 @@ GET     /createNewGame/:player1/:gameSize   controllers.Application.createNewGam
 GET     /joinGame/:gameId/:player2          controllers.Application.joinGame(gameId: Integer, player2: String)
 GET     /getAllGames                        controllers.Application.getAllGames()
 GET     /refresh                            controllers.Application.refresh()
+GET     /joined                             controllers.Application.joined()
 
 GET     /auth                               controllers.Application.auth()
 
