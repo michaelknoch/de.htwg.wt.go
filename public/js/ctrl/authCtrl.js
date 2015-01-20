@@ -16,7 +16,17 @@ angular.module('goApp')
                 templateUrl: 'assets/partials/authDialog.html',
                 onComplete: afterShowAnimation,
                 controller: function($scope, $rootScope, AuthService) {
-
+                    $scope.login = function(name, password) {
+                        AuthService.loginWithCredentials(name, password)
+                            .error(function() {
+                                $rootScope.isSignedIn = true;
+                                $state.go('welcome');
+                            })
+                            .then(function() {
+                                $rootScope.isSignedIn = true;
+                                $state.go('welcome');
+                            });
+                    };
                     $scope.renderSignIn = function() {
                         AuthService.auth()
                             .then(function(response) {
@@ -57,6 +67,5 @@ angular.module('goApp')
                 // post-show code here: DOM element focus, etc.
             }
         })();
-
 
     });
