@@ -52,7 +52,6 @@ angular.module('goApp')
                 $state.go('pregame', {
                     gameId: res.data.session
                 });
-                console.info('pregame');
             });
         };
 
