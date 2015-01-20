@@ -49,16 +49,19 @@ angular.module('goApp')
                 localStorage.setItem("gameId", res.data.session);
                 localStorage.setItem('myColor', 'white');
 
-                polling = $interval(function() {
-                    if (WelcomeService.joined()) {
-                        console.info("trigger");
+                var polling = $interval(function() {
+                  WelcomeService.joined().then(function(deepres) {
+                    if (deepres.data == 'true') {
                         $state.go('game', {
                             gameId: res.data.session
                         });
+                        $scope.closeDialog();
+                        $interval.cancel(polling);
                     }
+                  });
                 }, 100);
 
-            }).then($scope.closeDialog);
+            });
         };
 
         $scope.closeDialog = function() {
