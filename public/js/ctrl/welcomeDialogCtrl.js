@@ -16,6 +16,7 @@ angular.module('goApp')
         $scope.userId = $rootScope.userId;
         $scope.newPlayerName = $rootScope.userMail;
         $scope.player1 = $rootScope.userMail;
+        $scope.loggedIn = $rootScope.userMail;
 
         $scope.joinGame = function(gameId, newPlayerName) {
             WelcomeService.joinGame(gameId, newPlayerName)
@@ -71,6 +72,6 @@ angular.module('goApp')
                 });
         };
         fetchGames();
-        //$interval(fetchGames, 1500);
+        $interval(fetchGames, 1500);
 
     });
