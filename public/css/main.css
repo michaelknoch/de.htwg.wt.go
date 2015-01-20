@@ -80,10 +80,10 @@
 }
 
 .pass-button:focus {
- color: #333;
- background-color: #fff;
- border-color: #ccc;
- outline: none;
+   color: #333;
+   background-color: #fff;
+   border-color: #ccc;
+   outline: none;
 }
 
 .menu-bar {
@@ -421,9 +421,21 @@ md-tabs.md-default-theme md-tab {
         display: none;
     }
 
+    .your-turn {
+        padding-top: 40px;
+    }
+
     .sidebar-right {
         margin-left: -15px;
         box-sizing: content-box;
+    }
+
+    .scoreboard {
+        width: 45%;
+    }
+
+    .buttons {
+        width: 50%;
     }
 
     .sidebar-right.col-sm-3.col-xs-12 {
