@@ -9,7 +9,7 @@
  */
 angular.module('goApp')
     .controller('AuthCtrl', function($scope, $rootScope, $state, AuthService, $mdDialog) {
-        $rootScope.isSignedIn = false;
+        //$rootScope.isSignedIn = false;
 
         (function showWelcomeDialog($event) {
             $mdDialog.show({
