@@ -10,7 +10,7 @@
 angular.module('goApp')
     .controller('PregameCtrl', function($scope, $rootScope, $state, $stateParams, WelcomeService, $interval, $mdDialog) {
 
-
+        var intervalPromise = null;
 
         var polling = function() {
             WelcomeService.joined().then(function(deepres) {
@@ -20,7 +20,7 @@ angular.module('goApp')
                     });
                     $mdDialog.hide()
                         .then(function() {
-                            $interval.cancel(polling);
+                            $interval.cancel(intervalPromise);
                         });
 
                 }
@@ -28,7 +28,7 @@ angular.module('goApp')
         };
 
         var startPolling = function() {
-            $interval(polling, 1000);
+            intervalPromise = $interval(polling, 1000);
         };
 
 
