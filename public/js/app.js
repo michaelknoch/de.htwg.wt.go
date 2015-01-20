@@ -27,5 +27,10 @@ angular.module('goApp', ['ui.router', 'ngMaterial'])
                 url: '/game/:gameId',
                 templateUrl: 'assets/partials/game.html',
                 controller: 'GameCtrl'
+            })
+            .state('pregame', {
+                url: '/pregame/:gameId',
+                tenplateUrl: 'assets/partials/pregame.html',
+                controller: 'PregameCtrl'
             });
     });
