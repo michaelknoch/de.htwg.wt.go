@@ -220,7 +220,7 @@ md-divider.md-default-theme {
 
 span.label {
     color: black;
-    min-width: 160px;
+    min-width: 118px;
     float: left;
     font-weight: 300;
     font-size: 20px;
@@ -228,7 +228,7 @@ span.label {
 
 .create-button {
     border-radius: 0;
-    width: 100%;
+    width: auto;
     margin-top: 10px;
 }
 
@@ -398,6 +398,7 @@ md-tabs.md-default-theme md-tab {
 .logged-in {
     float: left;
     width: 100%;
+    padding-top: 10px;
 }
 
 .create-button .fa {
@@ -406,7 +407,7 @@ md-tabs.md-default-theme md-tab {
 }
 
 .create-button {
-    padding-bottom: 3px;
+    padding-bottom: 4px;
 }
 
 .fork-us {
@@ -419,6 +420,14 @@ md-tabs.md-default-theme md-tab {
 @media (max-width: 767px) {
     .fork-us {
         display: none;
+    }
+
+    .welcome-tab {
+        width: 100%;
+    }
+
+    .welcome-static-height {
+        height: auto;
     }
 
     .your-turn {
