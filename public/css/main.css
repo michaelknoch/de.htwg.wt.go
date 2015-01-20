@@ -238,6 +238,7 @@ md-tabs.md-default-theme md-tab {
 
 md-tabs.md-default-theme md-tabs-ink-bar {
     background: #364C1A !important;
+    height: 4px;
 }
 
 md-tabs.md-default-theme md-tab {
@@ -443,7 +444,18 @@ md-tabs.md-default-theme md-tab {
   }
 }
 
+.fork-us {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 @media (max-width: 767px) {
+    .fork-us {
+        display: none;
+    }
+
     .sidebar-right {
         margin-left: -15px;
         box-sizing: content-box;
