@@ -157,6 +157,7 @@ body {
 .welcome-static-height {
     overflow-y: scroll;
     height: 228px;
+    width: 100%;
     -webkit-transition: height 1s;
     -moz-transition: height 1s;
     -ms-transition: height 1s;
@@ -236,7 +237,7 @@ md-tabs.md-default-theme md-tab {
 }
 
 md-tabs.md-default-theme md-tabs-ink-bar {
-    background: #030e02 !important;
+    background: #364C1A !important;
 }
 
 md-tabs.md-default-theme md-tab {
@@ -245,6 +246,7 @@ md-tabs.md-default-theme md-tab {
 
 .your-name {
     padding: 0 15px;
+    margin-bottom: 9px;
 }
 
 .cell.cell-2, .cell.cell-1 {
@@ -274,6 +276,11 @@ md-tabs.md-default-theme md-tab {
   -webkit-animation: bounce 2.0s infinite ease-in-out;
   animation: bounce 2.0s infinite ease-in-out;
 }
+
+.buttons .btn.btn-default:active {
+    background: rgba(50, 79, 27, 0.2);
+}
+
 
 .loading .dot2 {
   top: auto;
@@ -318,6 +325,7 @@ md-tabs.md-default-theme md-tab {
     background: #DFF0F0;
     line-height: 16px;
     text-align: center;
+    border-radius: 5px;
 }
 
 
@@ -381,8 +389,9 @@ md-tabs.md-default-theme md-tab {
 }
 
 .pregame .spinner {
-  margin: 100px auto 0;
+  margin: auto;
   width: 70px;
+  padding: 7px 0;
   text-align: center;
 }
 
@@ -408,6 +417,15 @@ md-tabs.md-default-theme md-tab {
 .pregame .spinner .bounce2 {
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
+}
+
+.create-button .fa {
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+.create-button {
+    padding-bottom: 3px;
 }
 
 @-webkit-keyframes bouncedelay {
