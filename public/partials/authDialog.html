@@ -1,8 +1,23 @@
 <md-dialog>
     <md-content>
-        <div id="result"></div>
-        <div id="gButton"></div>
-        <div>some more later</div>
+    <div class="signIn">
+        <div class="col-md-12">
+            <h2>Login</h2>
+        </div>
+        <div class="col-md-12">
+            <p>Log in with your Google+ account:</p>
+            <div id="result"></div>
+            <div id="gButton"></div>
+        </div>
+         <md-divider></md-divider>
+        <div class="col-md-12">
+            <p>Log in:</p>
 
+            <div class="input-line"><span class="label">Name:</span> <input type="text" ng-model="name">
+            </div>
+            <div class="input-line"><span class="label">Password: </span> <input type="password" ng-model="password"></div>
+             <div class="create-button btn btn-default" ng-click="login(name, password)"><i class="fa fa-play"></i>Login</div>
+        </div>
+    </div>
     </md-content>
 </md-dialog>
