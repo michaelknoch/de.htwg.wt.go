@@ -155,12 +155,12 @@ body {
 .welcome-static-height {
     overflow-y: scroll;
     height: 228px;
-    max-width: 400px;
     -webkit-transition: height 1s;
     -moz-transition: height 1s;
     -ms-transition: height 1s;
     -o-transition: height 1s;
     transition: height 1s;
+    float: left;
 }
 
 .welcome-static-height::-webkit-scrollbar {
@@ -373,7 +373,10 @@ md-tabs.md-default-theme md-tab {
     color: green;
 }
 
-
+.logged-in {
+    float: left;
+    width: 100%;
+}
 
 @media (max-width: 767px) {
     .sidebar-right {
