@@ -26,6 +26,7 @@ angular.module('goApp')
                                 $rootScope.isSignedIn = true;
                                 $state.go('welcome');
                             });
+                        $rootScope.userMail = name;
                     };
                     $scope.renderSignIn = function() {
                         AuthService.auth()
