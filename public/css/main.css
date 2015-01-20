@@ -172,6 +172,7 @@ body {
 .welcome-static-height h3 {
     margin-bottom: 3px;
     float: left;
+    width: 100%;
     margin-top: 10px;
 }
 
@@ -238,6 +239,7 @@ md-tabs.md-default-theme md-tab {
 
 md-tabs.md-default-theme md-tabs-ink-bar {
     background: #364C1A !important;
+    height: 4px;
 }
 
 md-tabs.md-default-theme md-tab {
@@ -301,10 +303,10 @@ md-tabs.md-default-theme md-tab {
   0%, 100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 50% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
+    } 50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }
 
 .loading .spin-wrapper {
@@ -315,11 +317,17 @@ md-tabs.md-default-theme md-tab {
     left: 0;
     transition-duration: 1s;
     opacity: 1;
+    margin: 20% auto;
 }
 
 .loading .spin-wrapper.hide {
     opacity: 0;
 }
+
+.loading .spinner > div {
+    background-color: white !important;
+}
+
 
 .buttons .btn {
     background: #DFF0F0;
@@ -338,6 +346,9 @@ md-tabs.md-default-theme md-tab {
 .sidebar-right .btn:hover .fa {
     font-size: 50px;
 }
+.md-button.md-default-theme.md-primary {
+    color: #007200 !important;
+}
 
 .sidebar-right.col-sm-3.col-xs-12 {
     padding-left: 0px;
@@ -347,6 +358,7 @@ md-tabs.md-default-theme md-tab {
     overflow: hidden;
     background: rgba(255, 255,255, 0.3);
     padding-right: 0px;
+    border-left: 4px solid #dff0d8;
 }
 
 .buttons .btn span {
@@ -388,37 +400,6 @@ md-tabs.md-default-theme md-tab {
     width: 100%;
 }
 
-.pregame .spinner {
-  margin: auto;
-  width: 70px;
-  padding: 7px 0;
-  text-align: center;
-}
-
-.pregame .spinner > div {
-  width: 18px;
-  height: 18px;
-  background-color: #333;
-
-  border-radius: 100%;
-  display: inline-block;
-  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
-  animation: bouncedelay 1.4s infinite ease-in-out;
-  /* Prevent first frame from flickering when animation starts */
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-.pregame .spinner .bounce1 {
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-
-.pregame .spinner .bounce2 {
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-}
-
 .create-button .fa {
     margin-right: 5px;
     font-size: 15px;
@@ -428,25 +409,33 @@ md-tabs.md-default-theme md-tab {
     padding-bottom: 3px;
 }
 
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% { -webkit-transform: scale(0.0) }
-  40% { -webkit-transform: scale(1.0) }
-}
-
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 40% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
+.fork-us {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 @media (max-width: 767px) {
+    .fork-us {
+        display: none;
+    }
+
+    .your-turn {
+        padding-top: 40px;
+    }
+
     .sidebar-right {
         margin-left: -15px;
         box-sizing: content-box;
+    }
+
+    .scoreboard {
+        width: 45%;
+    }
+
+    .buttons {
+        width: 50%;
     }
 
     .sidebar-right.col-sm-3.col-xs-12 {
@@ -460,7 +449,7 @@ md-tabs.md-default-theme md-tab {
     }
 
     .sidebar-right.col-sm-3.col-xs-12 .btn {
-        width: 50%;
+        width: 30%;
         text-align: left;
     }
 

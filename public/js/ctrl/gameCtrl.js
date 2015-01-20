@@ -16,8 +16,8 @@ angular.module('goApp')
         function notAlive() {
             $scope.showConfirm = function(ev) {
                 var confirm = $mdDialog.confirm()
-                    .title('Game')
-                    .content('The game has been closed! White Score: ' + $scope.score.white + ' Black Score: ' + $scope.score.black)
+                    .title('The game has been closed!')
+                    .content('White Score: ' + $scope.score.white + ' Black Score: ' + $scope.score.black)
                     .ok('Got it!')
                     .targetEvent(ev);
                 $mdDialog.show(confirm).then(function() {

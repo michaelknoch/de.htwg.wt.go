@@ -6,7 +6,7 @@
         <div class="black" ng-class="{notactive: whosNext != 'black'}"><span class="score-number">{{score.black}}</span></div>
     </div>
 
-    <div class="your-turn col-xs-12">
+    <div class="your-turn col-xs-5 col-sm-12">
         <div ng-if="myTurn()"><i class="fa fa-check"></i><span>play</span></div>
         <div ng-if="!myTurn()"><i class="fa fa-ban"></i></i><span>wait</span></div>
     </div>
