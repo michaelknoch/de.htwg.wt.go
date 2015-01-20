@@ -10,6 +10,13 @@ angular.module('goApp')
 
         getUserInformation: function(access_token) {
             return $http.get('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + access_token);
+        },
+
+        loginWithCredentials: function(name, password) {
+            return $http.get('/loginWithCredentials', {
+                name: name,
+                password: password
+            });
         }
     };
 });
