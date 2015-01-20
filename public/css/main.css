@@ -172,6 +172,7 @@ body {
 .welcome-static-height h3 {
     margin-bottom: 3px;
     float: left;
+    width: 100%;
     margin-top: 10px;
 }
 
@@ -339,6 +340,9 @@ md-tabs.md-default-theme md-tab {
 .sidebar-right .btn:hover .fa {
     font-size: 50px;
 }
+.md-button.md-default-theme.md-primary {
+    color: #007200 !important;
+}
 
 .sidebar-right.col-sm-3.col-xs-12 {
     padding-left: 0px;
@@ -348,6 +352,7 @@ md-tabs.md-default-theme md-tab {
     overflow: hidden;
     background: rgba(255, 255,255, 0.3);
     padding-right: 0px;
+    border-left: 4px solid #dff0d8;
 }
 
 .buttons .btn span {
