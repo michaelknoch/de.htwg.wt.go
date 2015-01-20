@@ -80,10 +80,10 @@
 }
 
 .pass-button:focus {
-   color: #333;
-   background-color: #fff;
-   border-color: #ccc;
-   outline: none;
+ color: #333;
+ background-color: #fff;
+ border-color: #ccc;
+ outline: none;
 }
 
 .menu-bar {
@@ -303,10 +303,10 @@ md-tabs.md-default-theme md-tab {
   0%, 100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 50% {
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
-  }
+    } 50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
 }
 
 .loading .spin-wrapper {
@@ -323,6 +323,11 @@ md-tabs.md-default-theme md-tab {
 .loading .spin-wrapper.hide {
     opacity: 0;
 }
+
+.loading .spinner > div {
+    background-color: white !important;
+}
+
 
 .buttons .btn {
     background: #DFF0F0;
@@ -432,7 +437,7 @@ md-tabs.md-default-theme md-tab {
     }
 
     .sidebar-right.col-sm-3.col-xs-12 .btn {
-        width: 50%;
+        width: 30%;
         text-align: left;
     }
 
