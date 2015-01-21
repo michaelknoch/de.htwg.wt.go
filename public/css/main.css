@@ -5,7 +5,6 @@
     background-size: 100%;
 }
 .cell:hover {
-    /*background: url('../images/bwStone.png') no-repeat center center;*/
     cursor: pointer;
 }
 .line {
