@@ -1,25 +1,26 @@
 {
-    "name": "client-app",
-    "version": "0.0.2",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "karma start karma.test.config.js",
-        "karma": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
-    },
-    "devDependencies": {
-        "bower": "latest",
-        "jasmine-core": "^2.1.3",
-        "karma": "^0.12.31",
-        "karma-chrome-launcher": "^0.1.7",
-        "karma-firefox-launcher": "^0.1.4",
-        "karma-jasmine": "^0.3.5",
-        "karma-safari-launcher": "^0.1.1"
-    },
-    "postinstall": "cd public/ && node ./node_modules/bower/bin/bower install",
-    "engines": {
-        "node": "1.3.12"
-    },
-    "private": true,
-    "license": "MIT"
+  "name": "client-app",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.test.config.js",
+    "karma": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+  },
+  "devDependencies": {
+    "bower": "latest",
+    "jasmine-core": "^2.1.3",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-safari-launcher": "^0.1.1",
+    "phantomjs": "^1.9.13"
+  },
+  "postinstall": "cd public/ && node ./node_modules/bower/bin/bower install",
+  "engines": {
+    "node": "1.3.12"
+  },
+  "private": true,
+  "license": "MIT"
 }
