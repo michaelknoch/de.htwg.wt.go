@@ -3,7 +3,7 @@ node_js:
   - "0.11"
   - "0.10"
 before_script: cd public
-script: bower install && npm install && npm run karma
+script: npm install && bower install && npm run karma
 deploy:
   provider: heroku
   api_key: "82acde78-dec8-4f33-809e-45bc05e4db85"
