@@ -41,6 +41,7 @@ public class Application extends Controller {
 
     public static Result joinGame(int gameId, String player2) {
         GameInstance gameInstance = gameInstances.get(gameId);
+        // save gameId in session
         session("gameId", gameId + "");
         gameInstance.setPlayer2(player2);
         return ok(JSONValue.toJSONString(gameInstance));
@@ -64,23 +65,11 @@ public class Application extends Controller {
                 } else {
                     m1.put("availableToJoin", false);
                 }
-
                 l1.add(m1);
             }
-
         }
         String jsonText = JSONValue.toJSONString(l1);
         return ok(jsonText);
-    }
-
-    /**
-     * TODO: remove
-     *
-     * @return
-     */
-    public static Result test() {
-        System.out.println(gameInstances.size());
-        return ok("ok");
     }
 
     /**
