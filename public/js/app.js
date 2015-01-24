@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name invoicePocApp
+ * @name goApp
  * @description
- * # invoicePocApp
+ * # goApp
  *
  * Main module of the application.
  */
