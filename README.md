@@ -29,3 +29,4 @@ It exposes a RESTful http-api.
 |/getScore/| returns the Score of both players | - | - | -  |
 |/getGameField/| returns the Gamefield | - | - | -  |
 
+
